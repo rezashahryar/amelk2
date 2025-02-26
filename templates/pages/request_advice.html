@@ -1,0 +1,75 @@
+{% extends '_base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block content %}
+<form action="#" method="POST">
+    {% csrf_token %}
+    <div class="widget-box-2 mb-20">
+        <h5 class="title">اطلاعات فردی</h5>
+        <div class="box grid-3 gap-30">
+          <fieldset class="box-fieldset">
+            <label>نام و نام خانوادگی:<span>*</span></label>
+            <input class="form-control" type="text" name="full_name" />
+          </fieldset>
+          <fieldset class="box-fieldset">
+            <label>موبایل:<span>*</span></label>
+            <input class="form-control" type="text" name="mobile" />
+          </fieldset>
+        </div>
+        <h5 class="title">درخواست مشاوره و اطلاعات بیشتر</h5>
+        <div class="box grid-3 gap-30">
+          <fieldset class="box-fieldset">
+            <label>نوع خاصیت:<span>*</span></label>
+            {{ form.house_type|add_class:"nice-select" }}
+          </fieldset>
+          <fieldset class="box-fieldset">
+            <label>وضعیت ملک:<span>*</span></label>
+            {{ form.transaction_type|add_class:"nice-select" }}
+          </fieldset>
+        </div>
+        <h5 class="title">موقعیت مکانی ملک مورد نظر شما</h5>
+        <div class="box grid-3 gap-30">
+          <fieldset class="box-fieldset">
+            <label>اندازه (متر مربع):<span>*</span></label>
+            <input class="form-control" type="text" name="area" />
+          </fieldset>
+          <fieldset class="box-fieldset">
+            <label>مساحت زمین (متر مربع):<span>*</span></label>
+            <input class="form-control" type="text" name="land_area" />
+          </fieldset>
+          <fieldset class="box-fieldset">
+            <label>اتاق ها:<span>*</span></label>
+            <input class="form-control" type="text" name="num_rooms" />
+          </fieldset>
+        </div>
+        <div class="box grid-3 gap-30">
+          <fieldset class="box-fieldset">
+            <label>اتاق خواب ها:<span>*</span></label>
+            <input class="form-control" type="text" name="num_bedrooms" />
+          </fieldset>
+          <fieldset class="box-fieldset">
+            <label>حمام ها:<span>*</span></label>
+            <input class="form-control" type="text" name="num_bathrooms" />
+          </fieldset>
+          <fieldset class="box-fieldset">
+            <label>گاراژها:<span>*</span></label>
+            <input class="form-control" type="text" name="num_garage" />
+          </fieldset>
+        </div>
+        <div class="box grid-3 gap-30">
+          <fieldset class="box-fieldset">
+            <label>اندازه گاراژ (فوت متر مربع):<span>*</span></label>
+            <input class="form-control" type="text" name="land_garage" />
+          </fieldset>
+          <fieldset class="box-fieldset">
+            <label>سال ساخت:<span>*</span></label>
+            <input class="form-control" type="text" name="year_construction" />
+          </fieldset>
+        </div>
+        <div class="box-btn text-center">
+          <button class="tf-btn primary" type="submit">ارسال درخواست</button>
+        </div>
+      </div>
+</form>
+{% endblock %}

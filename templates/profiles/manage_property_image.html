@@ -1,0 +1,157 @@
+{% load static %}
+{% load profile_tags %}
+{% load widget_tweaks %}
+
+<!DOCTYPE html>
+<html lang="en-US" xml:lang="en-US" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Homelengo - الگوی HTML املاک و مستغلات</title>
+    <meta content="HTML ، CSS ، JavaScript ، bootstrap" name="keywords" />
+    <meta content="الگوی HTML املاک و مستغلات" name="description" />
+    <meta content="farham aghdasi" name="author" />
+    <meta content="width=device-width,initial-scale=1,maximum-scale=1" name="viewport" />
+    <link href="{% static 'fonts/fonts.css' %}" rel="stylesheet" />
+    <link href="{% static 'fonts/font-icons.css' %}" rel="stylesheet" />
+    <link href="{% static 'css/bootstrap.min.rtl.css' %}" rel="stylesheet" />
+    <link href="{% static 'css/swiper-bundle.min.css' %}" rel="stylesheet" />
+    <link href="{% static 'css/jquery.fancybox.min.css' %}" rel="stylesheet" />
+    <link href="{% static 'css/animate.css' %}" rel="stylesheet" />
+    <link href="{% static 'css/styles.rtl.css' %}" rel="stylesheet" type="text/css" />
+    <link href="{% static 'images/logo/favicon.png' %}" rel="shortcut icon" />
+    <link href="{% static 'images/logo/favicon.png' %}" rel="apple-touch-icon-precomposed" />
+  </head>
+  <body class="body bg-surface">
+    <div class="preload preload-container">
+      <div class="preload-logo">
+        <div class="spinner"></div>
+        <span class="icon icon-villa-fill"></span>
+      </div>
+    </div>
+    <div id="wrapper">
+      <div class="clearfix" id="page">
+        <div class="layout-wrap">
+          {% include 'includes/profile_header.html' %}
+          {% include 'includes/profile_sidebar.html' %}
+          <div class="main-content">
+            <div class="main-content-inner">
+              <div class="button-show-hide show-mb">
+                <span class="body-1">نمایش داشبورد</span>
+              </div>
+              <form action="#" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="widget-box-2 mb-20">
+                  <h5 class="title">رسانه بارگذاری</h5>
+                  <div class="box-uploadfile text-center">
+                    <div class="uploadfile">
+                      <div class="btn-upload tf-btn primary">
+                        {{ form.house|add_class:"nice-select" }}
+                        <svg fill="none" height="20" viewbox="0 0 21 20" width="21" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M13.625 14.375V17.1875C13.625 17.705 13.205 18.125 12.6875 18.125H4.5625C4.31386 18.125 4.0754 18.0262 3.89959 17.8504C3.72377 17.6746 3.625 17.4361 3.625 17.1875V6.5625C3.625 6.045 4.045 5.625 4.5625 5.625H6.125C6.54381 5.62472 6.96192 5.65928 7.375 5.72834M13.625 14.375H16.4375C16.955 14.375 17.375 13.955 17.375 13.4375V9.375C17.375 5.65834 14.6725 2.57417 11.125 1.97834C10.7119 1.90928 10.2938 1.87472 9.875 1.875H8.3125C7.795 1.875 7.375 2.295 7.375 2.8125V5.72834M13.625 14.375H8.3125C8.06386 14.375 7.8254 14.2762 7.64959 14.1004C7.47377 13.9246 7.375 13.6861 7.375 13.4375V5.72834M17.375 11.25V9.6875C17.375 8.94158 17.0787 8.22621 16.5512 7.69876C16.0238 7.17132 15.3084 6.875 14.5625 6.875H13.3125C13.0639 6.875 12.8254 6.77623 12.6496 6.60041C12.4738 6.4246 12.375 6.18614 12.375 5.9375V4.6875C12.375 4.31816 12.3023 3.95243 12.1609 3.6112C12.0196 3.26998 11.8124 2.95993 11.5512 2.69876C11.2901 2.4376 10.98 2.23043 10.6388 2.08909C10.2976 1.94775 9.93184 1.875 9.5625 1.875H8.625" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path>
+                        </svg>عکس ها را انتخاب کنید
+                        {% comment %} <input multiple name="cover" class="ip-file" type="file" id="imageUpload" accept="image/*" /> {% endcomment %}
+                        {{ form.image }}
+                      </div>
+                    </div>
+                  </div>
+                  <div name="cover" class="box-img-upload" id="imageContainer">
+                    <img src="" alt="" />
+                  </div>
+                  <div class="box-btn">
+                    <button type="submit" class="tf-btn btn-line" href="#">ذخیره و پیش نمایش</button>
+                  </div>
+                </div>
+                <div class="wrap-table">
+                  <div class="table-responsive">
+                    <table>
+                      <thead>
+                        <tr>
+                          <th>لیست</th>
+                          <th>وضعیت</th>
+                          <th>عمل</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {% for image in images %}
+                          <tr class="file-delete">
+                            <td>
+                              <div class="listing-box">
+                                <div class="images">
+                                  <img alt="images" width="80" src="{{ image.get_image_url }}" />
+                                </div>
+                                <div class="content">
+                                  <div class="title">
+                                    <a class="link" href="property-details-v1.html">{{ image.house.title }}</a>
+                                  </div>
+                                  {% comment %} <div class="text-date">تاریخ ارسال: {{ house.created_at }}</div> {% endcomment %}
+                                  {% comment %} {% if house.rent_info %}
+                                    <div class="text-btn text-primary">ودیعه: {{ house.rent_info.deposit }} تومان</div>
+                                    <div class="text-btn text-primary">اجاره ماهیانه: {{ house.rent_info.monthly_rent }} تومان</div>
+                                  {% elif house.sale_info %}
+                                    <div class="text-btn text-primary">پیش پرداخت: {{ house.sale_info.prepayment }} تومان</div>
+                                    <div class="text-btn text-primary">قیمت: {{ house.sale_info.price }} تومان</div>
+                                  {% endif %} {% endcomment %}
+                                </div>
+                              </div>
+                            </td>
+                            <td>
+                              <div class="status-wrap">
+                                <a class="btn-status" href="#">تصویب شده</a>
+                              </div>
+                            </td>
+                            <td>
+                              <ul class="list-action">
+                                <li>
+                                  <a class="item" href="{% url 'profiles:delete_image' image.pk %}">
+                                    <svg fill="none" height="16" viewbox="0 0 16 16" width="16" xmlns="http://www.w3.org/2000/svg">
+                                      <path d="M9.82667 6.00035L9.596 12.0003M6.404 12.0003L6.17333 6.00035M12.8187 3.86035C13.0467 3.89501 13.2733 3.93168 13.5 3.97101M12.8187 3.86035L12.1067 13.1157C12.0776 13.4925 11.9074 13.8445 11.63 14.1012C11.3527 14.3579 10.9886 14.5005 10.6107 14.5003H5.38933C5.0114 14.5005 4.64735 14.3579 4.36999 14.1012C4.09262 13.8445 3.92239 13.4925 3.89333 13.1157L3.18133 3.86035M12.8187 3.86035C12.0492 3.74403 11.2758 3.65574 10.5 3.59568M3.18133 3.86035C2.95333 3.89435 2.72667 3.93101 2.5 3.97035M3.18133 3.86035C3.95076 3.74403 4.72416 3.65575 5.5 3.59568M10.5 3.59568V2.98501C10.5 2.19835 9.89333 1.54235 9.10667 1.51768C8.36908 1.49411 7.63092 1.49411 6.89333 1.51768C6.10667 1.54235 5.5 2.19901 5.5 2.98501V3.59568M10.5 3.59568C8.83581 3.46707 7.16419 3.46707 5.5 3.59568" stroke="#A3ABB0" stroke-linecap="round" stroke-linejoin="round"></path>
+                                    </svg>حذف کردن
+                                  </a>
+                                </li>
+                                {% comment %} <form action="{% url 'profiles:manage_property_image' %}" method="POST">
+                                  {% csrf_token %}
+                                  <input type="hidden" name="house_pk" value="{{ image.house.pk }}" />
+                                  <li>
+                                    {{ form.image }}
+                                    <button class="item">
+                                      <svg fill="none" height="16" viewbox="0 0 16 16" width="16" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M9.82667 6.00035L9.596 12.0003M6.404 12.0003L6.17333 6.00035M12.8187 3.86035C13.0467 3.89501 13.2733 3.93168 13.5 3.97101M12.8187 3.86035L12.1067 13.1157C12.0776 13.4925 11.9074 13.8445 11.63 14.1012C11.3527 14.3579 10.9886 14.5005 10.6107 14.5003H5.38933C5.0114 14.5005 4.64735 14.3579 4.36999 14.1012C4.09262 13.8445 3.92239 13.4925 3.89333 13.1157L3.18133 3.86035M12.8187 3.86035C12.0492 3.74403 11.2758 3.65574 10.5 3.59568M3.18133 3.86035C2.95333 3.89435 2.72667 3.93101 2.5 3.97035M3.18133 3.86035C3.95076 3.74403 4.72416 3.65575 5.5 3.59568M10.5 3.59568V2.98501C10.5 2.19835 9.89333 1.54235 9.10667 1.51768C8.36908 1.49411 7.63092 1.49411 6.89333 1.51768C6.10667 1.54235 5.5 2.19901 5.5 2.98501V3.59568M10.5 3.59568C8.83581 3.46707 7.16419 3.46707 5.5 3.59568" stroke="#A3ABB0" stroke-linecap="round" stroke-linejoin="round"></path>
+                                      </svg>افزودن تصویر
+                                    </button>
+                                  </li>
+                                </form> {% endcomment %}
+                              </ul>
+                            </td>
+                          </tr>
+                        {% endfor %}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </form>
+            </div>
+            <div class="footer-dashboard">
+              {% comment %} <p>حق چاپ © 1403 توسط فرهام اقدسی</p> {% endcomment %}
+            </div>
+          </div>
+          <div class="overlay-dashboard"></div>
+        </div>
+      </div>
+    </div>
+    <div class="progress-wrap">
+      <svg class="progress-circle svg-content" height="100%" viewbox="-1 -1 102 102" width="100%">
+        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" style="
+                transition: stroke-dashoffset 10ms linear 0s;
+                stroke-dasharray: 307.919, 307.919;
+                stroke-dashoffset: 286.138;
+              "></path>
+      </svg>
+    </div>
+    <script src="{% static 'js/bootstrap.min.js' %}" type="text/javascript"></script>
+    <script src="{% static 'js/jquery.min.js' %}" type="text/javascript"></script>
+    <script src="{% static 'js/plugin.js' %}" type="text/javascript"></script>
+    <script src="{% static 'js/jquery.nice-select.min.js' %}" type="text/javascript"></script>
+    <script src="{% static 'js/shortcodes.js' %}" type="text/javascript"></script>
+    <script src="{% static 'js/main.js' %}" type="text/javascript"></script>
+  </body>
+</html>

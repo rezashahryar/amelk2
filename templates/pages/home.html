@@ -1,0 +1,417 @@
+{% extends '_base.html' %}
+{% load static %}
+
+{% block content %}
+  <section class="flat-slider home-1">
+    <div class="container relative">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="slider-content">
+            <div class="heading text-center">
+              <h1 class="title-large text-white animationtext slide">خانه ای برای تو<br /> <br /><span class="tf-text s1 cd-words-wrapper"><span class="item-text is-visible">املاک لوکس</span> <span class="item-text is-hidden">مشاورین حرفه ای</span></span></h1>
+              <p class="subtitle text-white body-2 wow fadeInUp" data-wow-delay=".2s">ما آژانس املاکی هستیم که به شما کمک می کنیم بهترین اقامتگاه ها را پیدا کنید</p>
+            </div>
+            <div class="flat-tab flat-tab-form">
+              <ul class="nav-tab-form style-1 justify-content-center" role="tablist">
+                <li class="nav-tab-item" role="presentation">
+                  <a class="nav-link-item active" data-bs-toggle="tab" href="#forRent">برای اجاره</a>
+                </li>
+                <li class="nav-tab-item" role="presentation">
+                  <a class="nav-link-item" data-bs-toggle="tab" href="#forSale">برای فروش</a>
+                </li>
+              </ul>
+              <div class="tab-content">
+                <div class="tab-pane fade active show" role="tabpanel">
+                  <div class="form-sl">
+                    <form method="post">
+                      <div class="wd-find-select">
+                        <div class="inner-group">
+                          <div class="form-group-1 search-form form-style">
+                            <label>نوع</label>
+                            <div class="group-select">
+                              <div class="nice-select" tabindex="0">
+                                <span class="current">همه</span>
+                                <ul class="list">
+                                  <li class="option selected" data-value="">همه</li>
+                                  <li class="option" data-value="villa">ویلا</li>
+                                  <li class="option" data-value="studio">استحکامات</li>
+                                  <li class="option" data-value="office">دفتر</li>
+                                  <li class="option" data-value="house">خانه</li>
+                                </ul>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="form-group-2 form-style">
+                            <label>محل</label>
+                            <div class="group-ip">
+                              <input class="form-control" name="s" placeholder="محل جستجو" required="" title="Search for" type="text" value="" /> <a class="icon icon-location" href="#"></a>
+                            </div>
+                          </div>
+                          <div class="form-group-3 form-style">
+                            <label>کلمه کلیدی</label> <input class="form-control" name="s" placeholder="کلمه کلیدی را جستجو کنید." required="" title="Search for" type="text" value="" />
+                          </div>
+                        </div>
+                        <div class="box-btn-advanced">
+                          <div class="form-group-4 box-filter">
+                            <a class="tf-btn btn-line filter-advanced pull-right">
+                              <span class="text-1">جستجوی پیشرفته</span> <svg fill="none" height="22" viewbox="0 0 22 22" width="22" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M5.5 12.375V3.4375M5.5 12.375C5.86467 12.375 6.21441 12.5199 6.47227 12.7777C6.73013 13.0356 6.875 13.3853 6.875 13.75C6.875 14.1147 6.73013 14.4644 6.47227 14.7223C6.21441 14.9801 5.86467 15.125 5.5 15.125M5.5 12.375C5.13533 12.375 4.78559 12.5199 4.52773 12.7777C4.26987 13.0356 4.125 13.3853 4.125 13.75C4.125 14.1147 4.26987 14.4644 4.52773 14.7223C4.78559 14.9801 5.13533 15.125 5.5 15.125M5.5 15.125V18.5625M16.5 12.375V3.4375M16.5 12.375C16.8647 12.375 17.2144 12.5199 17.4723 12.7777C17.7301 13.0356 17.875 13.3853 17.875 13.75C17.875 14.1147 17.7301 14.4644 17.4723 14.7223C17.2144 14.9801 16.8647 15.125 16.5 15.125M16.5 12.375C16.1353 12.375 15.7856 12.5199 15.5277 12.7777C15.2699 13.0356 15.125 13.3853 15.125 13.75C15.125 14.1147 15.2699 14.4644 15.5277 14.7223C15.7856 14.9801 16.1353 15.125 16.5 15.125M16.5 15.125V18.5625M11 6.875V3.4375M11 6.875C11.3647 6.875 11.7144 7.01987 11.9723 7.27773C12.2301 7.53559 12.375 7.88533 12.375 8.25C12.375 8.61467 12.2301 8.96441 11.9723 9.22227C11.7144 9.48013 11.3647 9.625 11 9.625M11 6.875C10.6353 6.875 10.2856 7.01987 10.0277 7.27773C9.76987 7.53559 9.625 7.88533 9.625 8.25C9.625 8.61467 9.76987 8.96441 10.0277 9.22227C10.2856 9.48013 10.6353 9.625 11 9.625M11 9.625V18.5625" stroke="#161E2D" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path>
+                              </svg>
+                            </a>
+                          </div><button class="tf-btn btn-search primary" type="submit">جستجو<i class="icon icon-search"></i></button>
+                        </div>
+                      </div>
+                      <div class="wd-search-form">
+                        <div class="grid-2 group-box group-price">
+                          <div class="widget-price">
+                            <div class="box-title-price">
+                              <span class="title-price fw-6">قیمت:</span>
+                              <div class="caption-price">
+                                <span class="fw-6" id="slider-range-value1"></span> <span>جدید</span> <span class="fw-6" id="slider-range-value2"></span>
+                              </div>
+                            </div>
+                            <div id="slider-range"></div>
+                            <div class="slider-labels">
+                              <div>
+                                <input name="min-value" type="hidden" value="" /> <input name="max-value" type="hidden" value="" />
+                              </div>
+                            </div>
+                          </div>
+                          <div class="widget-price">
+                            <div class="box-title-price">
+                              <span class="title-price fw-6">اندازه:</span>
+                              <div class="caption-price">
+                                <span class="fw-7" id="slider-range-value01"></span> <span>جدید</span> <span class="fw-7" id="slider-range-value02"></span>
+                              </div>
+                            </div>
+                            <div id="slider-range2"></div>
+                            <div class="slider-labels">
+                              <div>
+                                <input name="min-value2" type="hidden" value="" /> <input name="max-value2" type="hidden" value="" />
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="grid-2 group-box">
+                          <div class="group-select grid-2">
+                            <div class="box-select">
+                              <label class="title-select fw-6">اتاق</label>
+                              <div class="nice-select" tabindex="0">
+                                <span class="current">2</span>
+                                <ul class="list">
+                                  <li class="option" data-value="1">1</li>
+                                  <li class="option selected" data-value="2">2</li>
+                                  <li class="option" data-value="3">3</li>
+                                  <li class="option" data-value="4">4</li>
+                                  <li class="option" data-value="5">5</li>
+                                  <li class="option" data-value="6">6</li>
+                                  <li class="option" data-value="7">7</li>
+                                  <li class="option" data-value="8">8</li>
+                                  <li class="option" data-value="9">9</li>
+                                  <li class="option" data-value="10">10</li>
+                                </ul>
+                              </div>
+                            </div>
+                            <div class="box-select">
+                              <label class="title-select fw-6">حمام</label>
+                              <div class="nice-select" tabindex="0">
+                                <span class="current">2</span>
+                                <ul class="list">
+                                  <li class="option" data-value="1">1</li>
+                                  <li class="option selected" data-value="2">2</li>
+                                  <li class="option" data-value="3">3</li>
+                                  <li class="option" data-value="4">4</li>
+                                  <li class="option" data-value="5">5</li>
+                                  <li class="option" data-value="6">6</li>
+                                  <li class="option" data-value="7">7</li>
+                                  <li class="option" data-value="8">8</li>
+                                  <li class="option" data-value="9">9</li>
+                                  <li class="option" data-value="10">10</li>
+                                </ul>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="group-select grid-2">
+                            <div class="box-select">
+                              <label class="title-select fw-6">اتاق خواب</label>
+                              <div class="nice-select" tabindex="0">
+                                <span class="current">2</span>
+                                <ul class="list">
+                                  <li class="option" data-value="1">1</li>
+                                  <li class="option selected" data-value="2">2</li>
+                                  <li class="option" data-value="3">3</li>
+                                  <li class="option" data-value="4">4</li>
+                                  <li class="option" data-value="5">5</li>
+                                  <li class="option" data-value="6">6</li>
+                                  <li class="option" data-value="7">7</li>
+                                  <li class="option" data-value="8">8</li>
+                                  <li class="option" data-value="9">9</li>
+                                  <li class="option" data-value="10">10</li>
+                                </ul>
+                              </div>
+                            </div>
+                            <div class="box-select">
+                              <label class="title-select fw-6">نوع</label>
+                              <div class="nice-select" tabindex="0">
+                                <span class="current">2</span>
+                                <ul class="list">
+                                  <li class="option" data-value="1">1</li>
+                                  <li class="option selected" data-value="2">2</li>
+                                  <li class="option" data-value="3">3</li>
+                                  <li class="option" data-value="4">4</li>
+                                  <li class="option" data-value="5">5</li>
+                                  <li class="option" data-value="6">6</li>
+                                  <li class="option" data-value="7">7</li>
+                                  <li class="option" data-value="8">8</li>
+                                  <li class="option" data-value="9">9</li>
+                                  <li class="option" data-value="10">10</li>
+                                </ul>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="group-checkbox">
+                          <div class="text-1 text-black-2">امکانات:</div>
+                          <div class="group-amenities grid-6">
+                            <div class="box-amenities">
+                              <fieldset class="amenities-item">
+                                <input checked="" class="tf-checkbox style-1" id="cb1" type="checkbox" /> <label class="text-cb-amenities" for="cb1">وضعیت هوایی</label>
+                              </fieldset>
+                              <fieldset class="amenities-item mt-16">
+                                <input class="tf-checkbox style-1" id="cb2" type="checkbox" /> <label class="text-cb-amenities" for="cb2">تلویزیون کابلی</label>
+                              </fieldset>
+                              <fieldset class="amenities-item mt-16">
+                                <input class="tf-checkbox style-1" id="cb3" type="checkbox" /> <label class="text-cb-amenities" for="cb3">ارتفاع سقف</label>
+                              </fieldset>
+                              <fieldset class="amenities-item mt-16">
+                                <input class="tf-checkbox style-1" id="cb4" type="checkbox" /> <label class="text-cb-amenities" for="cb4">شومینه</label>
+                              </fieldset>
+                            </div>
+                            <div class="box-amenities">
+                              <fieldset class="amenities-item">
+                                <input class="tf-checkbox style-1" id="cb5" type="checkbox" /> <label class="text-cb-amenities" for="cb5">دسترسی غیرفعال</label>
+                              </fieldset>
+                              <fieldset class="amenities-item mt-16">
+                                <input checked="" class="tf-checkbox style-1" id="cb6" type="checkbox" /> <label class="text-cb-amenities" for="cb6">آسانسور</label>
+                              </fieldset>
+                              <fieldset class="amenities-item mt-16">
+                                <input class="tf-checkbox style-1" id="cb7" type="checkbox" /> <label class="text-cb-amenities" for="cb7">نرده</label>
+                              </fieldset>
+                              <fieldset class="amenities-item mt-16">
+                                <input class="tf-checkbox style-1" id="cb8" type="checkbox" /> <label class="text-cb-amenities" for="cb8">باغ</label>
+                              </fieldset>
+                            </div>
+                            <div class="box-amenities">
+                              <fieldset class="amenities-item">
+                                <input checked="" class="tf-checkbox style-1" id="cb9" type="checkbox" /> <label class="text-cb-amenities" for="cb9">طبقه</label>
+                              </fieldset>
+                              <fieldset class="amenities-item mt-16">
+                                <input class="tf-checkbox style-1" id="cb10" type="checkbox" /> <label class="text-cb-amenities" for="cb10">مبله</label>
+                              </fieldset>
+                              <fieldset class="amenities-item mt-16">
+                                <input checked="" class="tf-checkbox style-1" id="cb11" type="checkbox" /> <label class="text-cb-amenities" for="cb11">گاراژ</label>
+                              </fieldset>
+                              <fieldset class="amenities-item mt-16">
+                                <input class="tf-checkbox style-1" id="cb12" type="checkbox" /> <label class="text-cb-amenities" for="cb12">حیوانات خانگی دوستانه</label>
+                              </fieldset>
+                            </div>
+                            <div class="box-amenities">
+                              <fieldset class="amenities-item">
+                                <input class="tf-checkbox style-1" id="cb13" type="checkbox" /> <label class="text-cb-amenities" for="cb13">گرمایش</label>
+                              </fieldset>
+                              <fieldset class="amenities-item mt-16">
+                                <input class="tf-checkbox style-1" id="cb14" type="checkbox" /> <label class="text-cb-amenities" for="cb14">اینترکام</label>
+                              </fieldset>
+                              <fieldset class="amenities-item mt-16">
+                                <input class="tf-checkbox style-1" id="cb15" type="checkbox" /> <label class="text-cb-amenities" for="cb15">پارکینگ</label>
+                              </fieldset>
+                              <fieldset class="amenities-item mt-16">
+                                <input class="tf-checkbox style-1" id="cb16" type="checkbox" /> <label class="text-cb-amenities" for="cb16">وای فای</label>
+                              </fieldset>
+                            </div>
+                            <div class="box-amenities">
+                              <fieldset class="amenities-item">
+                                <input class="tf-checkbox style-1" id="cb17" type="checkbox" /> <label class="text-cb-amenities" for="cb17">نوسازی</label>
+                              </fieldset>
+                              <fieldset class="amenities-item mt-16">
+                                <input class="tf-checkbox style-1" id="cb18" type="checkbox" /> <label class="text-cb-amenities" for="cb18">امنیت</label>
+                              </fieldset>
+                              <fieldset class="amenities-item mt-16">
+                                <input class="tf-checkbox style-1" id="cb19" type="checkbox" /> <label class="text-cb-amenities" for="cb19">استخر شنا</label>
+                              </fieldset>
+                            </div>
+                            <div class="box-amenities">
+                              <fieldset class="amenities-item">
+                                <input class="tf-checkbox style-1" id="cb20" type="checkbox" /> <label class="text-cb-amenities" for="cb20">نوع پنجره</label>
+                              </fieldset>
+                              <fieldset class="amenities-item mt-16">
+                                <input class="tf-checkbox style-1" id="cb21" type="checkbox" /> <label class="text-cb-amenities" for="cb21">جستجوی ملک</label>
+                              </fieldset>
+                              <fieldset class="amenities-item mt-16">
+                                <input class="tf-checkbox style-1" id="cb22" type="checkbox" /> <label class="text-cb-amenities" for="cb22">سال ساخت</label>
+                              </fieldset>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="overlay"></div>
+  </section>
+  <section class="flat-section flat__card">
+    <div class="container">
+      <div class="box-title text-center wow fadeInUp">
+        <div class="text-subtitle text-primary"></div>
+        <h3 class="mt-4 title">املاک پیشنهادی بیشتر</h3>
+      </div>
+      <div class="tf-grid-layout md-col-3 wow fadeInUp" data-wow-delay=".2s">
+        <div class="box-service">
+          <div class="image">
+            <img alt="image-location" class="lazyload" data-src="{% static 'images/service/home-1.png' %}" src="{% static 'images/service/home-1.png' %}" />
+          </div>
+          <div class="content">
+            <h5 class="title">خرید خانه جدید</h5>
+            <p class="description">خانه رویایی خود را بدون زحمت کشف کنید. برای یک تجربه خرید بی‌نظیر، ویژگی ها متنوع و راهنمایی‌های متخصص را کاوش کنید.</p><a class="tf-btn btn-line" href="{% url 'pages:house_list' %}">بیشتر بدانید<span class="icon icon-arrow-left2"></span></a>
+          </div>
+        </div>
+        <div class="box-service">
+          <div class="image">
+            <img alt="image-location" class="lazyload" data-src="{% static 'images/service/home-2.png' %}" src="{% static 'images/service/home-2.png' %}" />
+          </div>
+          <div class="content">
+            <h5 class="title">فروش خانه</h5>
+            <p class="description">با راهنمایی های متخصص و استراتژی های موثر، با اطمینان کامل بفروشید، بهترین ویژگی های ملک خود را برای فروش موفق به نمایش بگذارید.</p><a class="tf-btn btn-line" href="{% url 'pages:house_list' %}">بیشتر بدانید<span class="icon icon-arrow-left2"></span></a>
+          </div>
+        </div>
+        <div class="box-service">
+          <div class="image">
+            <img alt="image-location" class="lazyload" data-src="{% static 'images/service/home-3.png' %}" src="{% static 'images/service/home-3.png' %}" />
+          </div>
+          <div class="content">
+            <h5 class="title">اجاره خانه</h5>
+            <p class="description">اجاره کامل خود را بدون زحمت کشف کنید. فهرست های متنوعی را که دقیقاً مطابق با نیازهای سبک زندگی منحصر به فرد شما طراحی شده اند، کاوش کنید.</p><a class="tf-btn btn-line" href="{% url 'pages:house_list' %}">بیشتر بدانید<span class="icon icon-arrow-left2"></span></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section></section>
+
+  <section class="flat-section flat-recommended">
+    <div class="container">
+      <div class="box-title text-center wow fadeInUp">
+        <div class="text-subtitle text-primary"></div>
+        <h3 class="mt-4 title">فروش ویژه</h3>
+      </div>
+      <div class="flat-tab-recommended flat-animate-tab wow fadeInUp" data-wow-delay=".2s">
+        <ul class="nav-tab-recommended justify-content-md-center" role="tablist">
+          <li class="nav-tab-item" role="presentation">
+            <a class="nav-link-item active" data-bs-toggle="tab" href="#viewAll">مشاهده همه</a>
+          </li>
+          <li class="nav-tab-item" role="presentation">
+            <a class="nav-link-item" data-bs-toggle="tab" href="#apartment">آپارتمان</a>
+          </li>
+          <li class="nav-tab-item" role="presentation">
+            <a class="nav-link-item" data-bs-toggle="tab" href="#villa">ویلا</a>
+          </li>
+          <li class="nav-tab-item" role="presentation">
+            <a class="nav-link-item" data-bs-toggle="tab" href="#house">خانه</a>
+          </li>
+          <li class="nav-tab-item" role="presentation">
+            <a class="nav-link-item" data-bs-toggle="tab" href="#office">دفتر</a>
+          </li>
+        </ul>
+        <div class="tab-content">
+          <div class="tab-pane active show" id="{{ property.get_house_type_display }}" role="tabpanel">
+            <div class="row">
+              <div class="col-xl-4 col-lg-6 col-md-6">
+                <div class="homelengo-box">
+                  <div class="archive-top">
+                    <a class="images-group" href="property-details-v1.html">
+                      <div class="images-style">
+                        <img alt="img" class="lazyload" data-src="{% static 'images/home/house-1.jpg' %}" src="{% static 'images/home/house-1.jpg' %}" />
+                      </div>
+                      <div class="top">
+                        <ul class="d-flex gap-6">
+                          <li class="flag-tag primary">برجسته</li>
+                          <li class="flag-tag style-1">برای فروش</li>
+                        </ul>
+                      </div>
+                      <div class="bottom">
+                        <svg fill="none" height="16" viewbox="0 0 16 16" width="16" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M10 7C10 7.53043 9.78929 8.03914 9.41421 8.41421C9.03914 8.78929 8.53043 9 8 9C7.46957 9 6.96086 8.78929 6.58579 8.41421C6.21071 8.03914 6 7.53043 6 7C6 6.46957 6.21071 5.96086 6.58579 5.58579C6.96086 5.21071 7.46957 5 8 5C8.53043 5 9.03914 5.21071 9.41421 5.58579C9.78929 5.96086 10 6.46957 10 7Z" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path>
+                          <path d="M13 7C13 11.7613 8 14.5 8 14.5C8 14.5 3 11.7613 3 7C3 5.67392 3.52678 4.40215 4.46447 3.46447C5.40215 2.52678 6.67392 2 8 2C9.32608 2 10.5979 2.52678 11.5355 3.46447C12.4732 4.40215 13 5.67392 13 7Z" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path>
+                        </svg>145 خیابان بروکلین، کالیفونیا، نیویورک
+                      </div>
+                    </a>
+                  </div>
+                  <div class="archive-bottom">
+                    <div class="content-top">
+                      <h6 class="text-capitalize"><a class="link" href="property-details-v1.html">لورم ایپسوم متن ساختگی با تو</a></h6>
+                      <ul class="meta-list">
+                        <li class="item">
+                          <i class="icon icon-bed"></i> <span class="text-variant-1">تخت ها:</span> <span class="fw-6">3</span>
+                        </li>
+                        <li class="item">
+                          <i class="icon icon-bath"></i> <span class="text-variant-1">حمام ها:</span> <span class="fw-6">2</span>
+                        </li>
+                        <li class="item">
+                          <i class="icon icon-متر مربع"></i> <span class="text-variant-1">متر مربع:</span> <span class="fw-6">1150</span>
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="content-bottom">
+                      <div class="d-flex gap-8 align-items-center">
+                        <div class="avatar avt-40 round">
+                          <img alt="avt" src="{% static 'images/avatar/avt-png1.png' %}" />
+                        </div><span>آرلین مک کوی</span>
+                      </div>
+                      <h6 class="price">7250،00 تومان</h6>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="text-center">
+            <a class="tf-btn btn-view primary size-1 hover-btn-view" href="sidebar-grid.html">مشاهده ویژگی ها<span class="icon icon-arrow-left2"></span></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="flat-location">
+    <div class="box-title text-center wow fadeInUp">
+      <div class="text-subtitle text-primary"></div>
+      <h3 class="mt-4 title">خانه های لوکس برای شما</h3>
+    </div>
+    <div class="wow fadeInUp" data-wow-delay=".2s">
+      <div class="swiper tf-sw-location" data-mobile="1" data-mobile-sm="2" data-pagination="1" data-pagination-lg="3" data-pagination-md="3" data-pagination-sm="2" data-preview="6" data-space="8" data-space-lg="8" data-space-md="8" data-tablet="3">
+        <div class="swiper-wrapper">
+          {% for house in properties %}
+            <div class="swiper-slide">
+              <div class="box-location">
+                <a class="image img-style" href="{{ house.get_absolute_url }}"><img alt="image-location" class="lazyload" data-src="{{ house.get_cover_url }}" src="{{ house.get_cover_url }}" /></a>
+                <div class="content">
+                  <div class="inner-left">
+                    <span class="sub-title fw-6">{{ house.title|truncatewords:'3' }}</span>
+                    <h6 class="title text-line-clamp-1 link">{{ house.address|truncatewords:'5' }}</h6>
+                  </div><a class="box-icon line w-44 round" href="{{ house.get_absolute_url }}"><i class="icon icon-arrow-left2"></i></a>
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+        <div class="sw-pagination sw-pagination-location text-center"></div>
+      </div>
+    </div>
+  </section>
+{% endblock %}

@@ -1,0 +1,186 @@
+{% load static %}
+{% load widget_tweaks %}
+
+<!DOCTYPE html>
+<html lang="en-US" xml:lang="en-US" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" /><title>Homelengo - الگوی HTML املاک و مستغلات</title><meta content="HTML ، CSS ، JavaScript ، bootstrap" name="keywords" />
+    <meta content="الگوی HTML املاک و مستغلات" name="description" />
+    <meta content="farham aghdasi" name="author" />
+    <meta content="width=device-width,initial-scale=1,maximum-scale=1" name="viewport" />
+    <link href="{% static 'fonts/fonts.css' %}" rel="stylesheet" />
+    <link href="{% static 'fonts/font-icons.css' %}" rel="stylesheet" />
+    <link href="{% static 'css/bootstrap.min.rtl.css' %}" rel="stylesheet" />
+    <link href="{% static 'css/jqueryui.min.rtl.css' %}" rel="stylesheet" type="text/css" />
+    <link href="{% static 'css/styles.rtl.css' %}" rel="stylesheet" type="text/css" />
+    <link href="{% static 'images/logo/favicon.png' %}" rel="shortcut icon" />
+    <link href="{% static 'images/logo/favicon.png' %}" rel="apple-touch-icon-precomposed" />
+  </head>
+  <body class="body bg-surface">
+    <div class="preload preload-container">
+      <div class="preload-logo">
+        <div class="spinner"></div><span class="icon icon-villa-fill"></span>
+      </div>
+    </div>
+    <div id="wrapper">
+      <div class="clearfix" id="page">
+        <div class="layout-wrap">
+          {% include 'includes/profile_header.html' %}
+          {% include 'includes/profile_sidebar.html' %}
+          <div class="main-content">
+            <div class="main-content-inner wrap-dashboard-content-2">
+              <div class="button-show-hide show-mb">
+                <span class="body-1">نمایش داشبورد</span>
+              </div>
+              <div class="widget-box-2">
+                <div class="box">
+                  <h5 class="title">تنظیمات حساب</h5><div class="box-agent-account">
+                    <h6>حساب نماینده</h6><p class="note">نوع حساب فعلی شما روی نماینده تنظیم شده است، اگر می خواهید حساب نماینده خود را حذف کنید و به حساب عادی بازگردید، باید روی دکمه زیر کلیک کنید.</p><a class="tf-btn primary" href="#">حذف اکانت نماینده</a>
+                  </div>
+                </div>
+                <form action="#" method="POST" enctype="multipart/form-data">
+                  {% csrf_token %}
+                  {% comment %} <div class="box">
+                    <h5 class="title">آواتار</h5><div class="box-agent-avt">
+                      <div class="avatar">
+                        <img alt="avatar" height="128" loading="lazy" src="{% static 'images/avatar/account.jpg' %}" width="128" />
+                      </div>
+                      <div class="content uploadfile">
+                        <p>یک آواتار جدید آپلود کنید</p>
+                        <div class="box-ip">
+                          <input class="ip-file" type="file" />
+                        </div>
+                        <p>JPEG 100x100</p>
+                      </div>
+                    </div>
+                  </div> {% endcomment %}
+                  <div class="box">
+                    <h5 class="title">پوستر مامور</h5><div class="box-agent-avt">
+                      <div class="img-poster">
+                        {% if form.instance.avatar %}
+                        <img width="300" alt="عکسی موجود نیست" loading="lazy" src="{{ form.instance.avatar.url }}" />
+                        {% endif %}
+                      </div>
+                      <div class="content uploadfile">
+                        <p>یک پوستر جدید آپلود کنید</p>
+                        <div class="box-ip">
+                          <input name="avatar" class="ip-file" type="file" />
+                        </div><span>JPEG 100x100</span>
+                      </div>
+                    </div>
+                  </div><h5 class="title">اطلاعات</h5><div class="box box-fieldset">
+                    <label>نام کامل:<span>*</span></label>
+                    {% comment %} <input name="full_name" class="form-control style-1" type="text" /> {% endcomment %}
+                    {{ form.full_name|add_class:'form-control style-1' }}
+                    {% for error in form.full_name.errors %}
+                      <p class="alert alert-danger text-center mt-2">{{ error }}</p>
+                    {% endfor %}
+                  </div>
+                  <div class="box box-fieldset">
+                    <label>توضیحات:<span>*</span></label>
+                    {% comment %} <textarea name="description"></textarea> {% endcomment %}
+                    {{ form.description }}
+                    {% for error in form.description.errors %}
+                      <p class="alert alert-danger text-center mt-2">{{ error }}</p>
+                    {% endfor %}
+                  </div>
+                  <div class="box grid-4 gap-30">
+                    <div class="box-fieldset">
+                      <label>شرکت شما:<span>*</span></label>
+                      {% comment %} <input name="name" class="form-control style-1" type="text" /> {% endcomment %}
+                      {{ form.name|add_class:'form-control style-1' }}
+                      {% for error in form.name.errors %}
+                        <p class="alert alert-danger text-center mt-2">{{ error }}</p>
+                      {% endfor %}
+                    </div>
+                    <div class="box-fieldset">
+                      <label>موقعیت:<span>*</span></label>
+                      {% comment %} <input name="location" class="form-control style-1" type="text" /> {% endcomment %}
+                      {{ form.location|add_class:'form-control style-1' }}
+                      {% for error in form.location.errors %}
+                        <p class="alert alert-danger text-center mt-2">{{ error }}</p>
+                      {% endfor %}
+                    </div>
+                    <div class="box-fieldset">
+                      <label>شماره دفتر:<span>*</span></label>
+                      {% comment %} <input name="office_number" class="form-control style-1" type="number" /> {% endcomment %}
+                      {{ form.office_number|add_class:'form-control style-1' }}
+                      {% for error in form.office_number.errors %}
+                        <p class="alert alert-danger text-center mt-2">{{ error }}</p>
+                      {% endfor %}
+                    </div>
+                    <div class="box-fieldset">
+                      <label>آدرس دفتر:<span>*</span></label>
+                      {% comment %} <input name="office_address" class="form-control style-1" type="text" /> {% endcomment %}
+                      {{ form.office_address|add_class:'form-control style-1' }}
+                      {% for error in form.office_address.errors %}
+                        <p class="alert alert-danger text-center mt-2">{{ error }}</p>
+                      {% endfor %}
+                    </div>
+                  </div>
+                  <div class="box grid-4 gap-30 box-info-2">
+                    <div class="box-fieldset">
+                      <label>آدرس ایمیل:<span>*</span></label>
+                      {% comment %} <input name="email" class="form-control style-1" type="text" /> {% endcomment %}
+                      {{ form.email|add_class:'form-control style-1' }}
+                      {% for error in form.email.errors %}
+                        <p class="alert alert-danger text-center mt-2">{{ error }}</p>
+                      {% endfor %}
+                    </div>
+                  </div>
+                  <div class="box box-fieldset">
+                    <label>فیس بوک:<span>*</span></label>
+                    {% comment %} <input name="facebook_url" class="form-control style-1" type="text" /> {% endcomment %}
+                    {{ form.facebook_url|add_class:'form-control style-1' }}
+                    {% for error in form.facebook_url.errors %}
+                      <p class="alert alert-danger text-center mt-2">{{ error }}</p>
+                    {% endfor %}
+                  </div>
+                  <div class="box box-fieldset">
+                    <label>توییتر:<span>*</span></label>
+                    {% comment %} <input name="tweeter_url" class="form-control style-1" type="text" /> {% endcomment %}
+                    {{ form.tweeter_url|add_class:'form-control style-1' }}
+                    {% for error in form.tweeter_url.errors %}
+                      <p class="alert alert-danger text-center mt-2">{{ error }}</p>
+                    {% endfor %}
+                  </div>
+                  <div class="box box-fieldset">
+                    <label>لینکدین:<span>*</span></label>
+                    {% comment %} <input name="linkedin_url" class="form-control style-1" type="text" /> {% endcomment %}
+                    {{ form.linkedin_url|add_class:'form-control style-1' }}
+                    {% for error in form.linkedin_url.errors %}
+                      <p class="alert alert-danger text-center mt-2">{{ error }}</p>
+                    {% endfor %}
+                  </div>
+                  <input name="is_updated" type="hidden" value="{{ form.instance.pk }}">
+                  <div class="box">
+                    <button type="submit" class="tf-btn primary">ذخیره</button>
+                  </div>
+                </form>
+                <br />
+                <br />
+                <br />
+              </div>
+            </div>
+            <div class="footer-dashboard">
+              {% comment %} <p>حق چاپ © 1403 توسط فرهام اقدسی</p> {% endcomment %}
+            </div>
+          </div>
+          <div class="overlay-dashboard"></div>
+        </div>
+      </div>
+    </div>
+    <div class="progress-wrap">
+      <svg class="progress-circle svg-content" height="100%" viewbox="-1 -1 102 102" width="100%">
+        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" style="transition:stroke-dashoffset 10ms linear 0s;stroke-dasharray:307.919,307.919;stroke-dashoffset:286.138"></path>
+      </svg>
+    </div>
+    <script src="{% static 'js/bootstrap.min.js' %}" type="text/javascript"></script>
+    <script src="{% static 'js/jquery.min.js' %}" type="text/javascript"></script>
+    <script src="{% static 'js/plugin.js' %}" type="text/javascript"></script>
+    <script src="{% static 'js/jqueryui.min.js' %}" type="text/javascript"></script>
+    <script src="{% static 'js/jquery.nice-select.min.js' %}" type="text/javascript"></script>
+    <script src="{% static 'js/shortcodes.js' %}" type="text/javascript"></script>
+    <script src="{% static 'js/main.js' %}" type="text/javascript"></script>
+  </body>
+</html>

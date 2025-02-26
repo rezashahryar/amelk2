@@ -1,0 +1,83 @@
+{% load static %}
+{% load humanize %}
+
+<!DOCTYPE html>
+<html lang="en-US" xml:lang="en-US" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>Homelengo - الگوی HTML املاک و مستغلات</title>
+    <meta content="HTML ، CSS ، JavaScript ، bootstrap" name="keywords" />
+    <meta charset="utf-8" />
+    <meta content="الگوی HTML املاک و مستغلات" name="description" />
+    <meta content="farham aghdasi" name="author" />
+    <meta content="width=device-width,initial-scale=1,maximum-scale=1" name="viewport" />
+    <link href="{% static 'fonts/fonts.css' %}" rel="stylesheet" />
+    <link href="{% static 'fonts/font-icons.css' %}" rel="stylesheet" />
+    <link href="{% static 'css/bootstrap.min.rtl.css' %}" rel="stylesheet" />
+    <link href="{% static 'css/swiper-bundle.min.css' %}" rel="stylesheet" />
+    <link href="{% static 'css/jquery.fancybox.min.css' %}" rel="stylesheet" />
+    <link href="{% static 'css/animate.css' %}" rel="stylesheet" />
+    <link href="{% static 'css/styles.rtl.css' %}" rel="stylesheet" type="text/css" />
+    <link href="{% static 'images/logo/favicon.png' %}" rel="shortcut icon" />
+    <link href="{% static 'images/logo/favicon.png' %}" rel="apple-touch-icon-precomposed" />
+  </head>
+  <body class="body bg-surface">
+    <div class="preload preload-container">
+      <div class="preload-logo">
+        <div class="spinner"></div><span class="icon icon-villa-fill"></span>
+      </div>
+    </div>
+    <div id="wrapper">
+      <div class="clearfix" id="page">
+        <div class="layout-wrap">
+          {% include 'includes/profile_header.html' %}
+          {% include 'includes/profile_sidebar.html' %}
+          <div class="main-content">
+            <div class="main-content-inner">
+              <div class="button-show-hide show-mb">
+                <span class="body-1">نمایش داشبورد</span>
+              </div>
+              <div class="widget-box-2 mess-box">
+                <h5 class="title">پیام</h5><ul class="list-mess">
+                  {% for req in visit_requests %}
+                  <li class="mess-item">
+                    <div class="user-box">
+                      <div class="avatar">
+                        <img alt="avt" src="{% static 'images/avatar/avt-png9.png' %}" />
+                      </div>
+                      <div class="content">
+                        <div class="name fw-6">کاربر: {{ req.full_name }}</div>
+                        <div class="name fw-6">موبایل: {{ req.mobile }}</div>
+                        <div class="name fw-6">ایمیل: {{ req.email }}</div>
+                        <div class="name fw-6">آگهی: {{ req.property.title }}</div>
+                        <span class="caption-2 text-variant-3">{{ req.datetime_created|naturaltime }}</span>
+                      </div>
+                    </div>
+                    <p>{{ req.text }}</p>
+                  </li>
+                  {% empty %}
+                  <p class="alert alert-danger text-center">درخواستی موجود نیست</p>
+                  {% endfor %}
+                </ul>
+              </div>
+            </div>
+            <div class="footer-dashboard footer-dashboard-2">
+              {% comment %} <p>حق چاپ © 1403 توسط فرهام اقدسی</p> {% endcomment %}
+            </div>
+          </div>
+          <div class="overlay-dashboard"></div>
+        </div>
+      </div>
+    </div>
+    <div class="progress-wrap">
+      <svg class="progress-circle svg-content" height="100%" viewbox="-1 -1 102 102" width="100%">
+        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" style="transition:stroke-dashoffset 10ms linear 0s;stroke-dasharray:307.919,307.919;stroke-dashoffset:286.138"></path>
+      </svg>
+    </div>
+    <script src="{% static 'js/bootstrap.min.js' %}" type="text/javascript"></script>
+    <script src="{% static 'js/jquery.min.js' %}" type="text/javascript"></script>
+    <script src="{% static 'js/plugin.js' %}" type="text/javascript"></script>
+    <script src="{% static 'js/jquery.nice-select.min.js' %}" type="text/javascript"></script>
+    <script src="{% static 'js/shortcodes.js' %}" type="text/javascript"></script>
+    <script src="{% static 'js/main.js' %}" type="text/javascript"></script>
+  </body>
+</html>
