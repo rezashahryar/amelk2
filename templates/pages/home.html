@@ -304,90 +304,101 @@
   </section>
 
   <section></section>
-
   <section class="flat-section flat-recommended">
     <div class="container">
-      <div class="box-title text-center wow fadeInUp">
-        <div class="text-subtitle text-primary"></div>
-        <h3 class="mt-4 title">فروش ویژه</h3>
-      </div>
-      <div class="flat-tab-recommended flat-animate-tab wow fadeInUp" data-wow-delay=".2s">
-        <ul class="nav-tab-recommended justify-content-md-center" role="tablist">
-          <li class="nav-tab-item" role="presentation">
-            <a class="nav-link-item active" data-bs-toggle="tab" href="#viewAll">مشاهده همه</a>
-          </li>
-          <li class="nav-tab-item" role="presentation">
-            <a class="nav-link-item" data-bs-toggle="tab" href="#apartment">آپارتمان</a>
-          </li>
-          <li class="nav-tab-item" role="presentation">
-            <a class="nav-link-item" data-bs-toggle="tab" href="#villa">ویلا</a>
-          </li>
-          <li class="nav-tab-item" role="presentation">
-            <a class="nav-link-item" data-bs-toggle="tab" href="#house">خانه</a>
-          </li>
-          <li class="nav-tab-item" role="presentation">
-            <a class="nav-link-item" data-bs-toggle="tab" href="#office">دفتر</a>
-          </li>
-        </ul>
-        <div class="tab-content">
-          <div class="tab-pane active show" id="{{ property.get_house_type_display }}" role="tabpanel">
-            <div class="row">
-              <div class="col-xl-4 col-lg-6 col-md-6">
-                <div class="homelengo-box">
-                  <div class="archive-top">
-                    <a class="images-group" href="property-details-v1.html">
-                      <div class="images-style">
-                        <img alt="img" class="lazyload" data-src="{% static 'images/home/house-1.jpg' %}" src="{% static 'images/home/house-1.jpg' %}" />
-                      </div>
-                      <div class="top">
-                        <ul class="d-flex gap-6">
-                          <li class="flag-tag primary">برجسته</li>
-                          <li class="flag-tag style-1">برای فروش</li>
-                        </ul>
-                      </div>
-                      <div class="bottom">
-                        <svg fill="none" height="16" viewbox="0 0 16 16" width="16" xmlns="http://www.w3.org/2000/svg">
-                          <path d="M10 7C10 7.53043 9.78929 8.03914 9.41421 8.41421C9.03914 8.78929 8.53043 9 8 9C7.46957 9 6.96086 8.78929 6.58579 8.41421C6.21071 8.03914 6 7.53043 6 7C6 6.46957 6.21071 5.96086 6.58579 5.58579C6.96086 5.21071 7.46957 5 8 5C8.53043 5 9.03914 5.21071 9.41421 5.58579C9.78929 5.96086 10 6.46957 10 7Z" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path>
-                          <path d="M13 7C13 11.7613 8 14.5 8 14.5C8 14.5 3 11.7613 3 7C3 5.67392 3.52678 4.40215 4.46447 3.46447C5.40215 2.52678 6.67392 2 8 2C9.32608 2 10.5979 2.52678 11.5355 3.46447C12.4732 4.40215 13 5.67392 13 7Z" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path>
-                        </svg>145 خیابان بروکلین، کالیفونیا، نیویورک
-                      </div>
-                    </a>
-                  </div>
-                  <div class="archive-bottom">
-                    <div class="content-top">
-                      <h6 class="text-capitalize"><a class="link" href="property-details-v1.html">لورم ایپسوم متن ساختگی با تو</a></h6>
-                      <ul class="meta-list">
-                        <li class="item">
-                          <i class="icon icon-bed"></i> <span class="text-variant-1">تخت ها:</span> <span class="fw-6">3</span>
-                        </li>
-                        <li class="item">
-                          <i class="icon icon-bath"></i> <span class="text-variant-1">حمام ها:</span> <span class="fw-6">2</span>
-                        </li>
-                        <li class="item">
-                          <i class="icon icon-متر مربع"></i> <span class="text-variant-1">متر مربع:</span> <span class="fw-6">1150</span>
-                        </li>
-                      </ul>
-                    </div>
-                    <div class="content-bottom">
-                      <div class="d-flex gap-8 align-items-center">
-                        <div class="avatar avt-40 round">
-                          <img alt="avt" src="{% static 'images/avatar/avt-png1.png' %}" />
-                        </div><span>آرلین مک کوی</span>
-                      </div>
-                      <h6 class="price">7250،00 تومان</h6>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="text-center">
-            <a class="tf-btn btn-view primary size-1 hover-btn-view" href="sidebar-grid.html">مشاهده ویژگی ها<span class="icon icon-arrow-left2"></span></a>
-          </div>
+        <div class="box-title text-center wow fadeInUp">
+            <div class="text-subtitle text-primary"> </div>
+            <h3 class="mt-4 title">فروش ویژه</h3>
         </div>
-      </div>
+        <div class="flat-tab-recommended flat-animate-tab wow fadeInUp" data-wow-delay=".2s">
+            <div class="tab-content">
+                <div class="tab-pane active show" id="viewAll" role="tabpanel">
+                    <div class="row">
+                        {% for property in properti_six %}
+                        <div class="col-xl-4 col-lg-6 col-md-6">
+                            <div class="homelengo-box">
+                                <div class="archive-top">
+                                    <a class="images-group" href="{% url 'HomeApp:HouseDetails' property.id %}">
+                                        <div class="images-style">
+                                            {% if property.images.exists %}
+                                            <img alt="img" class="lazyload"
+                                                src="{{ property.images.first.image.url }}" />
+                                            {% endif %}
+                                        </div>
+                                        <div class="top">
+                                            <ul class="d-flex gap-6">
+                                                <li class="flag-tag primary">برجسته</li>
+                                                <li class="flag-tag style-1">
+                                                    {% if PR.ad_type == "PURCHASE" %}
+                                                    خرید
+                                                    {% elif PR.ad_type == "SALE" %}
+                                                    فروش
+                                                    {% elif PR.ad_type == "LEASE" %}
+                                                    رهن
+                                                    {% elif PR.ad_type == "RENT" %}
+                                                    اجاره
+                                                    {% else %}
+                                                    نامشخص
+                                                    {% endif %}
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="bottom">
+                                            <svg fill="none" height="16" viewbox="0 0 16 16" width="16"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M10 7C10 7.53043 9.78929 8.03914 9.41421 8.41421C9.03914 8.78929 8.53043 9 8 9C7.46957 9 6.96086 8.78929 6.58579 8.41421C6.21071 8.03914 6 7.53043 6 7C6 6.46957 6.21071 5.96086 6.58579 5.58579C6.96086 5.21071 7.46957 5 8 5C8.53043 5 9.03914 5.21071 9.41421 5.58579C9.78929 5.96086 10 6.46957 10 7Z"
+                                                    stroke="white" stroke-linecap="round" stroke-linejoin="round"
+                                                    stroke-width="1.5"></path>
+                                                <path
+                                                    d="M13 7C13 11.7613 8 14.5 8 14.5C8 14.5 3 11.7613 3 7C3 5.67392 3.52678 4.40215 4.46447 3.46447C5.40215 2.52678 6.67392 2 8 2C9.32608 2 10.5979 2.52678 11.5355 3.46447C12.4732 4.40215 13 5.67392 13 7Z"
+                                                    stroke="white" stroke-linecap="round" stroke-linejoin="round"
+                                                    stroke-width="1.5"></path>
+                                            </svg>{{property.location}}
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="archive-bottom">
+                                    <div class="content-top">
+                                        <h6 class="text-capitalize"><a class="link"
+                                                href="property-details-v1.html">{{property.title}}</a></h6>
+                                        <ul class="meta-list">
+                                            <li class="item">
+                                                <i class="icon icon-bed"></i> <span class="text-variant-1">اتاق
+                                                    ها:</span> <span class="fw-6">{{property.num_bedrooms}}</span>
+                                            </li>
+                                            <li class="item">
+                                                <i class="icon icon-متر مربع"></i> <span class="text-variant-1">متر
+                                                    مربع:</span> <span class="fw-6">{{property.area}}</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="content-bottom">
+                                        <div class="d-flex gap-8 align-items-center">
+                                            <div class="avatar avt-40 round">
+                                                <img alt="avt" src="{{ property.user.avatar.url }}" />
+                                            </div><span>{{ property.user.email }}</span>
+                                        </div>
+                                        <h6 class="price">{{property.price_min}} تومان</h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+
+                    </div>
+                    <div class="text-center">
+                        <a class="tf-btn btn-view primary size-1 hover-btn-view"
+                            href="#">مشاهده ویژگی
+                            ها<span class="icon icon-arrow-left2"></span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-  </section>
+</section>
+  
+
   <section class="flat-location">
     <div class="box-title text-center wow fadeInUp">
       <div class="text-subtitle text-primary"></div>

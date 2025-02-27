@@ -1023,7 +1023,7 @@ label {
   font-weight: 600;
   padding: 27px 0;
   letter-spacing: 0;
-  color: #161e2d;
+  color: #ffffff;
   font-size: 16px;
   line-height: 21.86px;
   text-transform: capitalize;
@@ -1377,7 +1377,7 @@ label {
 }
 .mobile-menu .nav-logo {
   position: relative;
-  background: #E1EFFC;
+  background: #1563df;
   box-shadow: 0 4px 18px 0 rgba(0, 0, 0, 0.08);
   padding: 12px 20px;
 }
@@ -1608,11 +1608,13 @@ label {
   width: 100%;
   right: 0;
   top: 50%;
+  background-color: white;
   -webkit-transform-origin: 50% 50%;
   -ms-transform-origin: 50% 50%;
   transform-origin: 50% 50%;
 }
 .mobile-button span {
+  background-color: white;
   position: absolute;
   width: 100%;
   height: 2px;
@@ -8219,8 +8221,10 @@ label {
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 .sidebar-menu-dashboard .logo-box img {
-  width: 166px;
+  width:70px;
+
 }
+
 .sidebar-menu-dashboard .user-box {
   padding: 30px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);

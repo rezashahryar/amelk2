@@ -128,30 +128,7 @@
                       {% endfor %}
                     </div>
                   </div>
-                  <div class="box box-fieldset">
-                    <label>فیس بوک:<span>*</span></label>
-                    {% comment %} <input name="facebook_url" class="form-control style-1" type="text" /> {% endcomment %}
-                    {{ form.facebook_url|add_class:'form-control style-1' }}
-                    {% for error in form.facebook_url.errors %}
-                      <p class="alert alert-danger text-center mt-2">{{ error }}</p>
-                    {% endfor %}
-                  </div>
-                  <div class="box box-fieldset">
-                    <label>توییتر:<span>*</span></label>
-                    {% comment %} <input name="tweeter_url" class="form-control style-1" type="text" /> {% endcomment %}
-                    {{ form.tweeter_url|add_class:'form-control style-1' }}
-                    {% for error in form.tweeter_url.errors %}
-                      <p class="alert alert-danger text-center mt-2">{{ error }}</p>
-                    {% endfor %}
-                  </div>
-                  <div class="box box-fieldset">
-                    <label>لینکدین:<span>*</span></label>
-                    {% comment %} <input name="linkedin_url" class="form-control style-1" type="text" /> {% endcomment %}
-                    {{ form.linkedin_url|add_class:'form-control style-1' }}
-                    {% for error in form.linkedin_url.errors %}
-                      <p class="alert alert-danger text-center mt-2">{{ error }}</p>
-                    {% endfor %}
-                  </div>
+                
                   <input name="is_updated" type="hidden" value="{{ form.instance.pk }}">
                   <div class="box">
                     <button type="submit" class="tf-btn primary">ذخیره</button>
