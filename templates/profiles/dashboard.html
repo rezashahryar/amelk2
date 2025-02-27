@@ -103,7 +103,11 @@
                         </div>
                       </div> {% endcomment %}
                     </div>
-                    <div class="d-flex gap-4">
+                    <div class="box-agent-account">
+                      <h6>حساب نماینده</h6><p class="note">نوع حساب فعلی شما روی کاربر عادی تنظیم شده است، اگر می خواهید حساب خود را ارتقاء دهید و ثبت کننده آگهی شوید، باید روی دکمه زیر کلیک کنید.</p><a class="tf-btn primary" href="{% url "profiles:company_info" %}">ارتقاء اکانت</a>
+                    </div>
+                     
+                    <div class="d-flex gap-4 mt-2">
                       <span class="text-primary fw-7">{{ houses.count }}</span><span class="fw-6">نتایج یافت شد</span>
                     </div>
                     <div class="wrap-table">
