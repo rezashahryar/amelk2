@@ -98,15 +98,15 @@
                     </div>
                   {% else %}
                   <div class="inner-header-right header-account">
-                    <div class="box-avatar dropdown-toggle " data-bs-toggle="dropdown">
-                      
-                      <a class="tf-btn btn-line btn-login" href="{% url 'profiles:dashboard' %}">
+                    <div class=" dropdown-toggle " data-bs-toggle="dropdown">
+                      <a class="tf-btn btn-line " href="{% url 'profiles:dashboard' %}">
                       <p class="name">
-                        {{ user }}<span class="icon icon-arr-down"></span>
+                        {{ user }}<span class="icon icon-arr-down "></span>
                       </p>
                       </a>
                       <div class="dropdown-menu">
-                        <a class="dropdown-item" href="{% url 'profiles:dashboard' %}">داشبور</a> <a class="dropdown-item" href="#">خروج</a> 
+                        <a class="dropdown-item" href="{% url 'profiles:dashboard' %}">داشبور</a> 
+                        <a class="dropdown-item" href="{% url 'accounts:logout' %}">خروج</a> 
                       </div>
                     </div>
                    
