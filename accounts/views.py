@@ -34,6 +34,8 @@ def register_view(request):
             register_form.save()
             messages.success(request, 'حساب کاربری شما با موفقیت ساخته شد')
             return redirect('accounts:login')
+        else:
+            print(register_form.errors)
     context = {
         'register_form': register_form,
     }

@@ -1,15 +1,13 @@
-{% extends "parent/base.html" %}
+{% extends "_base.html" %}
 {% load static %}
-{% block title %}amelk{% endblock title %}
 
-{% comment %} content {% endcomment %}
 {% block content %}
 <div class="layout-wrap ">
   <div class="widget-box-2 ">
     <div class="box">
       <div class="box-title-listing">
         <div class="box-left">
-          <a href="home.html"> <i class="icon icon-arr-r"></i></a><h3 class="fw-8">فروش ملک</h3>
+          <a href="{% url "pages:home" %}"> <i class="icon icon-arr-r"></i></a><h3 class="fw-8">فروش ملک</h3>
         </div>
         </div>
         <div class="box-agent-account">
@@ -24,17 +22,17 @@
         </div>
     {% endif %}
           <p class="note">آملک، فروش خانه شما و حرکت رو به جلو را ساده‌تر می‌کند زمانی که شما درخواست ملک خود را در آملک ثبت کنید، آملک درخواست شما را مورد بررسی قرار داده و در اختیار یکی از بهترین مشاورین املاک منطقه قرار می‌دهد.</p>
-          {% if user.is_authenticated %}
-              <form method="POST" action="{% url 'HomeApp:EstateSell' %}">
+          {% comment %} {% if user.is_authenticated %}
+              <form method="POST" action="#">
                   {% csrf_token %}
                   <div class="custom-wrap advanced-box-btn text-align-center">
                       <button type="submit" class="custom-tf-btn custom-btn-line">ارسال درخواست</button>
                   </div>
               </form>
-          {% else %}
+          {% else %} {% endcomment %}
               <p  class="alert alert-warning mt-5" >برای ثبت درخواست، لطفاً وارد حساب کاربری خود شوید.</p>
-                <a class="custom-tf-btn custom-btn-line" href="{% url 'authentication:login' %}">ورود</a>
-          {% endif %}
+                <a class="custom-tf-btn custom-btn-line" href="{% url 'accounts:login' %}">ورود</a>
+          {% comment %} {% endif %} {% endcomment %}
       </div>
       </div>
     </div>

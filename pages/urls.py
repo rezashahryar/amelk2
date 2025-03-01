@@ -17,4 +17,7 @@ urlpatterns = [
     path('add/favorite/property/<int:pk>/', views.add_favorite_property, name='add_favorite_property'),
     path('delete/favorite/property/<int:pk>/', views.delete_favorite_property, name='delete_favorite_property'),
     path('request/advice/', views.RequestAdviceView.as_view(), name='request_advice'),
+    path('learn/more/buy/', views.LearnMoreBuyPageView.as_view(), name='learn_more_buy'),
+    path('learn/more/sell/', views.LearnMoreSellPageView.as_view(), name='learn_more_sell'),
+    path('r/', views.EstateAlquilarView.as_view(), name='r'),
 ]

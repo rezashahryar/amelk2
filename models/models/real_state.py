@@ -236,6 +236,7 @@ class FavoriteProperty(models.Model):
 class RequestAdvice(models.Model):
     full_name = models.CharField(max_length=255)
     mobile = models.CharField(max_length=11, validators=[validate_integer])
+    price = models.IntegerField(null=True, blank=True)
     house_type = models.CharField(
         max_length=9,
         choices=[
@@ -252,16 +253,17 @@ class RequestAdvice(models.Model):
             ('rent', 'برای اجاره')
         ]
     )
-    area = models.IntegerField()
-    land_area = models.IntegerField()
-    num_rooms = models.IntegerField()
-    num_bedrooms = models.IntegerField()
-    num_bathrooms = models.IntegerField()
-    num_garage = models.IntegerField()
-    land_garage = models.IntegerField()
-    year_construction = models.IntegerField()
-    full_name = models.CharField(max_length=255)
-    mobile = models.IntegerField()
+    location = models.CharField(max_length=555, null=True, blank=True)
+    area = models.IntegerField(null=True)
+    land_area = models.IntegerField(null=True)
+    num_rooms = models.IntegerField(null=True)
+    num_bedrooms = models.IntegerField(null=True)
+    num_bathrooms = models.IntegerField(null=True)
+    num_garage = models.IntegerField(null=True)
+    land_garage = models.IntegerField(null=True)
+    year_construction = models.IntegerField(null=True)
+    full_name = models.CharField(max_length=255, null=True)
+    mobile = models.IntegerField(null=True)
     datetime_created = models.DateTimeField(auto_now_add=True)
 
     class Meta:

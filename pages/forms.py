@@ -21,24 +21,28 @@ class RequestAdviceForm(forms.Form):
             ('office', 'اداری'),
             ('apartman', 'آپارتمان'),
             ('house', 'خانه'),
-        )
+        ),
+        required=False
     )
     transaction_type = forms.ChoiceField(
         choices=(
             ('sale', 'برای فروش'),
             ('rent', 'برای اجاره')
-        )
+        ),
+        required=False
     )
-    area = forms.IntegerField()
-    land_area = forms.IntegerField()
-    num_rooms = forms.IntegerField()
-    num_bedrooms = forms.IntegerField()
-    num_bathrooms = forms.IntegerField()
-    num_garage = forms.IntegerField()
-    land_garage = forms.IntegerField()
-    year_construction = forms.IntegerField()
-    full_name = forms.CharField()
-    mobile = forms.IntegerField()
+    area = forms.IntegerField(required=False)
+    land_area = forms.IntegerField(required=False)
+    num_rooms = forms.IntegerField(required=False)
+    num_bedrooms = forms.IntegerField(required=False)
+    num_bathrooms = forms.IntegerField(required=False)
+    num_garage = forms.IntegerField(required=False)
+    land_garage = forms.IntegerField(required=False)
+    year_construction = forms.IntegerField(required=False)
+    full_name = forms.CharField(required=False)
+    mobile = forms.IntegerField(required=False)
+    price = forms.IntegerField(required=False)
+    location = forms.CharField(required=False)
 
     def save(self):
         data = self.cleaned_data
@@ -54,6 +58,8 @@ class RequestAdviceForm(forms.Form):
             land_garage=data['land_garage'],
             year_construction=data['year_construction'],
             full_name=data['full_name'],
-            mobile=data['mobile']
+            mobile=data['mobile'],
+            price=data['price'],
+            location=data['location'],
         )
         return obj

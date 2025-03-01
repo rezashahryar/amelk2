@@ -11,6 +11,25 @@ from .forms import PropertyCommentForm, AddHomeVisitRequestForm, RequestAdviceFo
 # Create your views here.
 
 
+class EstateAlquilarView(generic.TemplateView):
+    template_name = 'pages/EstateAlquilar.html'
+
+
+class LearnMoreBuyPageView(generic.FormView):
+    template_name = 'pages/learn_more_buy.html'
+    form_class = RequestAdviceForm
+    success_url = reverse_lazy('pages:home')
+
+    def form_valid(self, form):
+        form.save()
+        messages.success(self.request, 'درخواست شما با موفقیت ثبت شد')
+        return super().form_valid(form)
+
+
+class LearnMoreSellPageView(generic.TemplateView):
+    template_name = 'pages/EstateSell.html'
+
+
 @require_POST
 def add_home_visit_request_view(request, pk):
     property_obj = get_object_or_404(Property, pk=pk)
