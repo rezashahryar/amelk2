@@ -8339,10 +8339,11 @@ label {
   padding: 30px;
   border-radius: 16px;
   background-color: #fff;
-  box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.0392156863);
+  box-shadow: rgba(17, 17, 26, 0.1) 0px 0px 16px;
 }
 .widget-box-2 .title {
   margin-bottom: 20px;
+  color: #274A90;
 }
 .layout-wrap .main-content {
   padding-right: 280px;
@@ -8818,6 +8819,9 @@ tr {
 }
 .box-fieldset label {
   margin-bottom: 8px;
+}
+.box-fieldset label > span{
+  color: red;
 }
 .box-fieldset .nice-select {
   padding: 15px 18px;
@@ -11130,4 +11134,42 @@ tr {
   .rtl .flat-slider.home-2 .img-banner-left {
     animation: none;
   }
+}
+/* hani style */
+.custom-wrap {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.custom-tf-btn {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.custom-tf-btn:hover {
+  background-color: #2455A9;
+}
+
+.custom-btn-line {
+  background-color: transparent;
+  border: 1px solid #007bff;
+  color: #007bff;
+}
+
+.custom-btn-line:hover {
+  background-color: #2455A9;
+  color: white;
+}
+
+.advanced-box-btn {
+  margin-top: 20px;
+}
+
+.text-align-center {
+  text-align: center;
 }
