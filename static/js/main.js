@@ -383,7 +383,22 @@
       });
     },
   };
+// dashboard
 
+
+document.addEventListener('DOMContentLoaded', function() {  
+  const dropdownItems = document.querySelectorAll('.dropdown-item');  
+
+  dropdownItems.forEach(function(item) {  
+    item.addEventListener('click', function(event) {  
+      // جلوگیری از بسته شدن dropdown  
+      event.stopPropagation();  
+
+      // هدایت به صفحه مورد نظر  
+      window.location.href = this.href;  
+    });  
+  });  
+});  
   /* alert box
   ------------------------------------------------------------------------------------- */
   var alertBox = function () {

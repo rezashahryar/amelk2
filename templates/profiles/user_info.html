@@ -40,28 +40,31 @@
                     <h6>حساب نماینده</h6><p class="note">نوع حساب فعلی شما روی کاربر عادی تنظیم شده است، اگر می خواهید حساب خود را ارتقاء دهید و ثبت کننده آگهی شوید، باید روی دکمه زیر کلیک کنید.</p><a class="tf-btn primary" href="{% url "profiles:company_info" %}">ارتقاء اکانت</a>
                   </div>
                 </div>
-                <form action="#" method="POST">
-                  {% csrf_token %}
-                  <h5 class="title">اطلاعات</h5>
-                  <div class="box-fieldset">
-                    <label>ایمیل:<span>*</span></label>
-                    {{ form.email|add_class:'form-control style-1' }}
-                    {% for error in form.office_address.errors %}
-                      <p class="alert alert-danger text-center mt-2">{{ error }}</p>
-                    {% endfor %}
-                  </div>
-                  <div class="box-fieldset">
-                    <label>موبایل:<span>*</span></label>
-                    {% comment %} <input name="office_number" class="form-control style-1" type="number" /> {% endcomment %}
-                    {{ form.mobile|add_class:'form-control style-1' }}
-                    {% for error in form.office_number.errors %}
-                      <p class="alert alert-danger text-center mt-2">{{ error }}</p>
-                    {% endfor %}
-                  </div>
-                  <div class="box">
-                    <button type="submit" class="tf-btn primary mt-2">ذخیره</button>
-                  </div>
-                </form>
+                
+                  <form action="#" method="POST">
+                    {% csrf_token %}
+                    <h5 class="title">اطلاعات</h5>
+                    <div class="box-fieldset">
+                      <label>ایمیل:<span>*</span></label>
+                      {{ form.email|add_class:'form-control style-1' }}
+                      {% for error in form.office_address.errors %}
+                        <p class="alert alert-danger text-center mt-2">{{ error }}</p>
+                      {% endfor %}
+                    
+                    <div class="box-fieldset">
+                      <label>موبایل:<span>*</span></label>
+                      {% comment %} <input name="office_number" class="form-control style-1" type="number" /> {% endcomment %}
+                      {{ form.mobile|add_class:'form-control style-1' }}
+                      {% for error in form.office_number.errors %}
+                        <p class="alert alert-danger text-center mt-2">{{ error }}</p>
+                      {% endfor %}
+                    </div>
+                    <div class="box">
+                      <button type="submit" class="tf-btn primary mt-2">ذخیره</button>
+                    </div>
+                  </form>
+                </div>
+                
                 <br />
                 <br />
                 <br />

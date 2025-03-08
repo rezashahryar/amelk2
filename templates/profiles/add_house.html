@@ -58,9 +58,10 @@
                     {% comment %} <img src="" alt=""> {% endcomment %}
                   </div>
                 </div>
-                <div class="widget-box-2 mb-20">
-                  <h5 class="title">اطلاعات</h5>
-                  <div class="box-info-property">
+
+                <div class=" widget-box-2 mb-20">  
+                  <h5 class="title">اطلاعات </h5>  
+                  <div class="box grid-2 gap-30">  
                     <fieldset class="box box-fieldset">
                       <label>عنوان:<span>*</span></label>
                       <input name="title" class="form-control" placeholder="انتخاب کردن" type="text" />
@@ -68,13 +69,148 @@
                         <p class="alert alert-danger text-center mt-2">{{ error }}</p>
                       {% endfor %}
                     </fieldset>
-                    <fieldset class="box box-fieldset">
-                      <label>توضیحات:</label>
-                      <textarea name="description" class="textarea" placeholder="توضیحات شما"></textarea>
-                      {% for error in form.description.errors %}
-                        <p class="alert alert-danger text-center mt-2">{{ error }}</p>
-                      {% endfor %}
+                      <fieldset class="box-fieldset">  
+                          <label>نوع معامله:<span>*</span></label>  
+                          <select id="transaction_type" name="transaction_type" class="nice-select">  
+                              <option value="">انتخاب کنید</option>  
+                              <option value="rent">اجاره</option>  
+                              <option value="sell">فروش</option>  
+                          </select>  
+                      </fieldset>  
+                  </div>  
+              
+                  <!-- فیلدهای مربوط به "فروش" -->  
+                  <div id="sell_fields" style="display: none;" class="box grid-3 gap-30">  
+                    <div class="box grid-3 gap-30">
+                      <fieldset class="box-fieldset">
+                        <label>نوع ملک:<span>*</span></label>
+                        {{ form.house_type|add_class:"nice-select" }}
+                        
+                      </fieldset>
+                      <fieldset class="box-fieldset">  
+                        <label>موقعیت ملک:<span>*</span></label>  
+                        <input name="location" class="form-control" type="text" />  
+                    </fieldset>  
+                    <fieldset class="box-fieldset">  
+                        <label>متراژ (متر مربع):<span>*</span></label>  
+                        <input name="area" class="form-control" type="text" />  
+                    </fieldset>  
+                     
+                    </div>
+                    <div class="box grid-3 gap-30">
+                      <fieldset class="box-fieldset">  
+                        <label>سال ساخت:<span>*</span></label>  
+                        <input name="year_construction" class="form-control" type="text" />  
+                    </fieldset>  
+                    <fieldset class="box-fieldset">  
+                      <label>قیمت فروش:<span>*</span></label>  
+                      <input name="price" class="form-control" type="text" />  
+                  </fieldset>
+                    <fieldset class="box-fieldset">  
+                      <label>پارکینگ:<span>*</span></label>  
+                      <select name="parking" class="nice-select">  
+                          <option value="">انتخاب کنید</option>  
+                          <option value="yes">دارد</option>  
+                          <option value="no">ندارد</option>  
+                      </select>  
+                  </fieldset>  
+                  <fieldset class="box-fieldset">  
+                    <label>آسانسور:<span>*</span></label>  
+                    <select name="elevator" class="nice-select">  
+                        <option value="">انتخاب کنید</option>  
+                        <option value="yes">دارد</option>  
+                        <option value="no">ندارد</option>  
+                    </select>   
+                  </fieldset>
+                  <fieldset class="box-fieldset">  
+                    <label>تعداد خواب:<span>*</span></label>  
+                    <input name="num_bedrooms" class="form-control" type="text" />  
+                </fieldset> 
+                  
+                    </div> 
+                    <fieldset>
+                      <label for="message">پیام شما:</label>
+                      <textarea class="form-control" name="" id="" cols="30" rows="10"></textarea>
                     </fieldset>
+                  </div>  
+              
+                  <!-- فیلدهای مربوط به "اجاره" -->  
+                  <div id="rent_fields" style="display: none;" class="box grid-3 gap-30">  
+
+                    <div class="box grid-3 gap-30">
+                      <fieldset class="box-fieldset">
+                        <label>نوع ملک:<span>*</span></label>
+                        {{ form.house_type|add_class:"nice-select" }}
+                        
+                      </fieldset>  
+                    <fieldset class="box-fieldset">  
+                        <label>موقعیت:<span>*</span></label>  
+                        <input name="rent_location" class="form-control" type="text" />  
+                    </fieldset>  
+                    <fieldset class="box-fieldset">  
+                        <label>متراژ:<span>*</span></label>  
+                        <input name="rent_area" class="form-control" type="text" />  
+                    </fieldset>
+                    </div>
+                    <div class="box grid-3 gap-30">
+                       
+                      <fieldset class="box-fieldset">
+                        <label>ودیعه:<span>*</span></label>
+                        <input name="deposit" class="form-control" placeholder="مقدار مثال: 12345.67" type="text" />
+                        {% for error in form.deposit.errors %}
+                          <p class="alert alert-danger text-center mt-2">{{ error }}</p>
+                        {% endfor %}
+                      </fieldset>  
+                      <fieldset class="box-fieldset">
+                        <label>اجاره ماهیانه:<span>*</span></label>
+                        <input name="rent_amount" class="form-control" type="text" />
+                        {% for error in form.monthly_rent.errors %}
+                          <p class="alert alert-danger text-center mt-2">{{ error }}</p>
+                        {% endfor %}
+                      </fieldset>
+                      <fieldset class="box-fieldset">
+                        <label>تعداد خواب ها:<span>*</span></label>
+                        <input name="num_bedrooms" class="form-control" type="text" />
+                        {% for error in form.num_bedrooms.errors %}
+                          <p class="alert alert-danger text-center mt-2">{{ error }}</p>
+                        {% endfor %}
+                      </fieldset>
+  
+                    </div>
+                    <div class="box grid-3 gap-30">
+                      <fieldset class="box-fieldset">  
+                        <label>امکانات:<span>*</span></label>  
+                        <input name="amenities" class="form-control" type="text" />  
+                    </fieldset>  
+                    <fieldset class="box-fieldset">  
+                      <label>پارکینگ:<span>*</span></label>  
+                      <select name="rent_parking" class="nice-select">  
+                          <option value="">انتخاب کنید</option>  
+                          <option value="yes">دارد</option>  
+                          <option value="no">ندارد</option>  
+                      </select>  
+                  </fieldset>  
+                  <fieldset class="box-fieldset">  
+                      <label>آسانسور:<span>*</span></label>  
+                      <select name="rent_elevator" class="nice-select">  
+                          <option value="">انتخاب کنید</option>  
+                          <option value="yes">دارد</option>  
+                          <option value="no">ندارد</option>  
+                      </select>  
+                  </fieldset>  
+                    
+                    
+                    </div>
+                    <fieldset>
+                      <label for="message">پیام شما:</label>
+                      <textarea class="form-control" name="" id="" cols="30" rows="10"></textarea>
+                    </fieldset>
+                  </div>  
+              </div>  
+                <div class="widget-box-2 mb-20">
+                  <h5 class="title">اطلاعات تکمیلی</h5>
+                  <div class="box-info-property">
+                   
                     <div class="box grid-3 gap-30">
                       <fieldset class="box-fieldset">
                         <label>آدرس کامل:<span>*</span></label>
@@ -131,7 +267,15 @@
                           </ul>
                         </div> {% endcomment %}
                       </fieldset>
+                      
                     </div>
+                    <fieldset class="box box-fieldset">
+                      <label>توضیحات:</label>
+                      <textarea name="description" class="textarea" placeholder="توضیحات شما"></textarea>
+                      {% for error in form.description.errors %}
+                        <p class="alert alert-danger text-center mt-2">{{ error }}</p>
+                      {% endfor %}
+                    </fieldset>
                     {% comment %} <div class="box box-fieldset">
                       <label>مکان:<span>*</span></label>
                       <div class="box-ip">
@@ -142,180 +286,9 @@
                     </div> {% endcomment %}
                   </div>
                 </div>
-                <div class="widget-box-2 mb-20">
-                  <h5 class="title">اطلاعات تکمیلی</h5>
-                  <div class="box grid-3 gap-30">
-                    <fieldset class="box-fieldset">
-                      <label>نوع ملک:<span>*</span></label>
-                      {{ form.house_type|add_class:"nice-select" }}
-                      {% comment %} <div class="nice-select" tabindex="0">
-                        <span class="current">انتخاب کردن</span>
-                        <ul class="list">
-                          <li class="option" data-value="1">آپارتمان</li>
-                          <li class="option" data-value="2">ویلا</li>
-                          <li class="option" data-value="3">استحکامات</li>
-                          <li class="option" data-value="4">استحکامات</li>
-                          <li class="option" data-value="5">دفتر</li>
-                          <li class="option" data-value="6">خانه شهری</li>
-                        </ul>
-                      </div> {% endcomment %}
-                    </fieldset>
-                    <fieldset class="box-fieldset">
-                      <label>وضعیت ملک:<span>*</span></label>
-                      {{ form.transaction_type }}
-                      {% for error in form.transaction_type.errors %}
-                        <p class="alert alert-danger text-center mt-2">{{ error }}</p>
-                      {% endfor %}
-                      {% comment %} <div class="nice-select" tabindex="0">
-                        <span class="current">انتخاب کردن</span>
-                        <ul class="list">
-                          <li class="option" data-value="1">برای اجاره</li>
-                          <li class="option" data-value="2">برای فروش</li>
-                        </ul>
-                      </div> {% endcomment %}
-                    </fieldset>
-                    <fieldset class="box-fieldset">
-                      <label>اندازه (متر مربع):<span>*</span></label>
-                      <input name="area" class="form-control" type="text" />
-                      {% for error in form.area.errors %}
-                        <p class="alert alert-danger text-center mt-2">{{ error }}</p>
-                      {% endfor %}
-                    </fieldset>
-                  </div>
-                  <div class="box grid-3 gap-30">
-                    <fieldset class="box-fieldset">
-                      <label>مساحت زمین (فوت متر مربع):<span>*</span></label>
-                      <input name="land_area" class="form-control" type="text" />
-                      {% for error in form.land_area.errors %}
-                        <p class="alert alert-danger text-center mt-2">{{ error }}</p>
-                      {% endfor %}
-                    </fieldset>
-                    <fieldset class="box-fieldset">
-                      <label>شناسه ملک:<span>*</span></label>
-                      <input name="house_id" class="form-control" type="text" />
-                      {% for error in form.house_id.errors %}
-                        <p class="alert alert-danger text-center mt-2">{{ error }}</p>
-                      {% endfor %}
-                    </fieldset>
-                    <fieldset class="box-fieldset">
-                      <label>اتاق ها:<span>*</span></label>
-                      <input name="num_rooms" class="form-control" type="text" />
-                      {% for error in form.num_rooms.errors %}
-                        <p class="alert alert-danger text-center mt-2">{{ error }}</p>
-                      {% endfor %}
-                    </fieldset>
-                  </div>
-                  <div class="box grid-3 gap-30">
-                    <fieldset class="box-fieldset">
-                      <label>اتاق خواب ها:<span>*</span></label>
-                      <input name="num_bedrooms" class="form-control" type="text" />
-                      {% for error in form.num_bedrooms.errors %}
-                        <p class="alert alert-danger text-center mt-2">{{ error }}</p>
-                      {% endfor %}
-                    </fieldset>
-                    <fieldset class="box-fieldset">
-                      <label>حمام ها:<span>*</span></label>
-                      <input name="num_bathrooms" class="form-control" type="text" />
-                      {% for error in form.num_bathrooms.errors %}
-                        <p class="alert alert-danger text-center mt-2">{{ error }}</p>
-                      {% endfor %}
-                    </fieldset>
-                    <fieldset class="box-fieldset">
-                      <label>گاراژها:<span>*</span></label>
-                      <input name="num_garage" class="form-control" type="text" />
-                      {% for error in form.num_garage.errors %}
-                        <p class="alert alert-danger text-center mt-2">{{ error }}</p>
-                      {% endfor %}
-                    </fieldset>
-                  </div>
-                  <div class="box grid-3 gap-30">
-                    <fieldset class="box-fieldset">
-                      <label>اندازه گاراژ (فوت متر مربع):<span>*</span></label>
-                      <input name="garage_area" class="form-control" type="text" />
-                      {% for error in form.garage_area.errors %}
-                        <p class="alert alert-danger text-center mt-2">{{ error }}</p>
-                      {% endfor %}
-                    </fieldset>
-                    <fieldset class="box-fieldset">
-                      <label>سال ساخت:<span>*</span></label>
-                      <input name="year_construction" class="form-control" type="text" />
-                      {% for error in form.year_construction.errors %}
-                        <p class="alert alert-danger text-center mt-2">{{ error }}</p>
-                      {% endfor %}
-                    </fieldset>
-                  </div>
-                </div>
-                <div class="widget-box-2 mb-20">
-                  <h5 class="title">قیمت</h5>
-                  <div class="box-price-property">
-                    <div class="box grid-2 gap-30">
-                      <fieldset class="box-fieldset">
-                        <label>ودیعه:<span>*</span></label>
-                        <input name="deposit" class="form-control" placeholder="مقدار مثال: 12345.67" type="text" />
-                        {% for error in form.deposit.errors %}
-                          <p class="alert alert-danger text-center mt-2">{{ error }}</p>
-                        {% endfor %}
-                      </fieldset>
-                      <fieldset class="box-fieldset">
-                        <label>اجاره ماهیانه:<span>*</span></label>
-                        <input name="monthly_rent" class="form-control" type="text" />
-                        {% for error in form.monthly_rent.errors %}
-                          <p class="alert alert-danger text-center mt-2">{{ error }}</p>
-                        {% endfor %}
-                      </fieldset>
-                      <fieldset class="box-fieldset">
-                        <label>پیش پرداخت:<span>*</span></label>
-                        <input name="prepayment" class="form-control" type="text" />
-                        {% comment %} {% for error in form.monthly_rent.errors %}
-                          <p class="alert alert-danger text-center mt-2">{{ error }}</p>
-                        {% endfor %} {% endcomment %}
-                      </fieldset>
-                      <fieldset class="box-fieldset">
-                        <label>قیمت فروش:<span>*</span></label>
-                        <input name="price" class="form-control" type="text" />
-                        {% comment %} {% for error in form.monthly_rent.errors %}
-                          <p class="alert alert-danger text-center mt-2">{{ error }}</p>
-                        {% endfor %} {% endcomment %}
-                      </fieldset>
-                    </div>
-                  </div>
-                </div>
-                <div class="widget-box-2 mb-20">
-                  <h5 class="title">امکانات رفاهی<span>*</span></h5>
-                  <div class="box-amenities-property">
-                    {% for amenity in amenities %}
-                    <div class="box-amenities">
-                      <div class="title-amenities text-btn">{{ amenity.name }}:</div>
-                      <div class="list-amenities">
-                        {% for fac in amenity.facility.all %}
-                        <fieldset class="amenities-item">
-                          <input value="{{ fac.pk }}" name="fac" class="tf-checkbox style-1" id="{{ fac.name }}" type="checkbox" />
-                          <label class="text-cb-amenities" for="{{ fac.name }}">{{ fac }}</label>
-                        </fieldset>
-                        {% endfor %}
-                      </div>
-                    </div>
-                    {% endfor %}
-                  </div>
-                </div>
-                {% comment %} <div class="widget-box-2 mb-20">
-                  <h5 class="title">تور مجازی 360</h5>
-                  <div class="box-radio-check">
-                    <div class="text-btn mb-16">نوع تور مجازی:</div>
-                    <fieldset class="fieldset-radio">
-                      <input checked="" class="tf-checkbox style-1" id="radio1" name="radio" type="radio" />
-                      <label class="text-radio" for="radio1">کد تعبیه شده</label>
-                    </fieldset>
-                    <fieldset class="fieldset-radio">
-                      <input class="tf-checkbox style-1" id="radio2" name="radio" type="radio" />
-                      <label class="text-radio" for="radio2">آپلود تصویر</label>
-                    </fieldset>
-                  </div>
-                  <fieldset class="box-fieldset">
-                    <label>کد جاسازی شده Virtual 360</label>
-                    <textarea class="textarea"></textarea>
-                  </fieldset>
-                </div> {% endcomment %}
+              
+               
+                
                 <div class="widget-box-2 mb-20">
                   <h5 class="title">ویدیوها</h5>
                   <fieldset class="box-fieldset">
@@ -330,94 +303,7 @@
                     <input name="house_plan" class="form-control" type="file" />
                   </fieldset>
                 </div>
-                {% comment %} <div class="widget-box-2 mb-20">
-                  <h5 class="title">طبقات</h5>
-                  <div class="box-radio-check">
-                    <div class="text-btn mb-16">فعال کردن طرح طبقه:</div>
-                    <fieldset class="fieldset-radio">
-                      <input checked="" class="tf-checkbox style-1" id="radio3" name="radio2" type="radio" />
-                      <label class="text-radio" for="radio3">فعال کردن</label>
-                    </fieldset>
-                    <fieldset class="fieldset-radio">
-                      <input class="tf-checkbox style-1" id="radio4" name="radio2" type="radio" />
-                      <label class="text-radio" for="radio4">غیر فعال کردن</label>
-                    </fieldset>
-                  </div>
-                  <div class="box-floor-property file-delete">
-                    <div class="top d-flex justify-content-between align-items-center">
-                      <h6>طبقه 1:</h6>
-                      <a class="remove-file" href="#"><span class="icon icon-close2"></span></a>
-                    </div>
-                    <fieldset class="box box-fieldset">
-                      <label>نام طبقه:</label>
-                      <input class="form-control style-1" type="text" />
-                    </fieldset>
-                    <div class="grid-2 box gap-30">
-                      <fieldset class="box-fieldset">
-                        <label>قیمت طبقات (فقط رقمی):</label>
-                        <input class="form-control style-1" type="text" />
-                      </fieldset>
-                      <fieldset class="box-fieldset">
-                        <label>پست ثابت قیمت:</label>
-                        <input class="form-control style-1" type="text" />
-                      </fieldset>
-                    </div>
-                    <div class="grid-2 box gap-30">
-                      <fieldset class="box-fieldset">
-                        <label>اندازه طبقه (فقط ارقام):</label>
-                        <input class="form-control style-1" type="text" />
-                      </fieldset>
-                      <fieldset class="box-fieldset">
-                        <label>سایز پست فیکس:</label>
-                        <input class="form-control style-1" type="text" />
-                      </fieldset>
-                    </div>
-                    <div class="grid-2 box gap-30">
-                      <fieldset class="box-fieldset">
-                        <label>اتاق خواب ها:</label>
-                        <input class="form-control style-1" type="text" />
-                      </fieldset>
-                      <fieldset class="box-fieldset">
-                        <label>حمام ها:</label>
-                        <input class="form-control style-1" type="text" />
-                      </fieldset>
-                    </div>
-                    <div class="grid-2 box gap-30">
-                      <fieldset class="box-fieldset">
-                        <label>تصویر طبقه:</label>
-                        <div class="box-floor-img uploadfile">
-                          <div class="btn-upload tf-btn primary">
-                            <svg fill="none" height="20" viewbox="0 0 21 20" width="21" xmlns="http://www.w3.org/2000/svg">
-                              <path d="M2.375 13.125L6.67417 8.82583C6.84828 8.65172 7.05498 8.51361 7.28246 8.41938C7.50995 8.32515 7.75377 8.27665 8 8.27665C8.24623 8.27665 8.49005 8.32515 8.71754 8.41938C8.94502 8.51361 9.15172 8.65172 9.32583 8.82583L13.625 13.125M12.375 11.875L13.5492 10.7008C13.7233 10.5267 13.93 10.3886 14.1575 10.2944C14.385 10.2001 14.6288 10.1516 14.875 10.1516C15.1212 10.1516 15.365 10.2001 15.5925 10.2944C15.82 10.3886 16.0267 10.5267 16.2008 10.7008L18.625 13.125M3.625 16.25H17.375C17.7065 16.25 18.0245 16.1183 18.2589 15.8839C18.4933 15.6495 18.625 15.3315 18.625 15V5C18.625 4.66848 18.4933 4.35054 18.2589 4.11612C18.0245 3.8817 17.7065 3.75 17.375 3.75H3.625C3.29348 3.75 2.97554 3.8817 2.74112 4.11612C2.5067 4.35054 2.375 4.66848 2.375 5V15C2.375 15.3315 2.5067 15.6495 2.74112 15.8839C2.97554 16.1183 3.29348 16.25 3.625 16.25ZM12.375 6.875H12.3817V6.88167H12.375V6.875ZM12.6875 6.875C12.6875 6.95788 12.6546 7.03737 12.596 7.09597C12.5374 7.15458 12.4579 7.1875 12.375 7.1875C12.2921 7.1875 12.2126 7.15458 12.154 7.09597C12.0954 7.03737 12.0625 6.95788 12.0625 6.875C12.0625 6.79212 12.0954 6.71263 12.154 6.65403C12.2126 6.59542 12.2921 6.5625 12.375 6.5625C12.4579 6.5625 12.5374 6.59542 12.596 6.65403C12.6546 6.71263 12.6875 6.79212 12.6875 6.875Z" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path>
-                            </svg>فایل را انتخاب کنید<input class="ip-file" type="file" />
-                          </div>
-                          <p class="file-name">یا فایل را برای آپلود اینجا رها کنید</p>
-                        </div>
-                      </fieldset>
-                      <fieldset class="box-fieldset">
-                        <label>توضیحات:</label>
-                        <textarea class="textarea"></textarea>
-                      </fieldset>
-                    </div>
-                  </div>
-                  <div class="text-center">
-                    <a class="btn-add-floor" href="#"><span class="icon icon-plus"></span></a>
-                  </div>
-                </div>
-                <div class="widget-box-2 mb-20">
-                  <h5 class="title">اطلاعات نماینده</h5>
-                  <div class="box-radio-check">
-                    <div class="text-btn mb-16">اطلاعات عامل نوع را انتخاب کنید؟</div>
-                    <fieldset class="fieldset-radio">
-                      <input checked="" class="tf-checkbox style-1" id="radio5" name="radio3" type="radio" />
-                      <label class="text-radio" for="radio5">اطلاعات کاربر فعلی شما</label>
-                    </fieldset>
-                    <fieldset class="fieldset-radio">
-                      <input class="tf-checkbox style-1" id="radio6" name="radio3" type="radio" />
-                      <label class="text-radio" for="radio6">تماس دیگر</label>
-                    </fieldset>
-                  </div>
-                </div> {% endcomment %}
+              
                 <div class="box-btn">
                   {% comment %} <a class="tf-btn primary" href="#">اموال اضافه کردن</a> {% endcomment %}
                   <button type="submit" class="tf-btn btn-line" href="#">ذخیره و پیش نمایش</button>
@@ -516,6 +402,31 @@
           reader.readAsDataURL(file);
         }
       }); {% endcomment %}
+
+      document.addEventListener('DOMContentLoaded', function() {  
+        const transactionType = document.getElementById('transaction_type');  
+        const sellFields = document.getElementById('sell_fields');  
+        const rentFields = document.getElementById('rent_fields');  
+    
+        function toggleFields() {  
+            const selectedValue = transactionType.value;  
+    
+            if (selectedValue === 'rent') {  
+                sellFields.style.display = 'none';  
+                rentFields.style.display = 'block';  
+            } else if (selectedValue === 'sell') {  
+                sellFields.style.display = 'block';  
+                rentFields.style.display = 'none';  
+            } else {  
+                sellFields.style.display = 'none';  
+                rentFields.style.display = 'none';  
+            }  
+        }  
+    
+        transactionType.addEventListener('change', toggleFields);  
+    
+        toggleFields(); // برای اینکه در بارگذاری اولیه صفحه هم فیلدها درست نمایش داده بشن  
+    });  
     </script>
   </body>
 </html>

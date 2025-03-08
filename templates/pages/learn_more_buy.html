@@ -100,7 +100,7 @@
 
             <div class="tab-content">
               <div class="widget-box-2 mb-20">
-                <h5 class="title">درخواست مشاوره و اطلاعات بیشتر</h5>
+                
                 {% if messages %}
                 <div class="messages">
                   {% for message in messages %}
@@ -112,51 +112,56 @@
                   {% csrf_token %}
                   <div class="box grid-3 gap-30">
                     <fieldset class="box-fieldset">
-                      <label>نوع درخواست:<span>*</span></label>
+                      <label>نوع ملک:<span>*</span></label>
+                      <select name="" class="form-control" id="">
+                        <option value="">آپارتمان</option>
+                        <option value="">ویلا</option>
+                        <option value="">تجاری</option>
+                      </select>
                       {{ form.ad_type }}
                     </fieldset>
                   </div>
                   <h5 class="title">موقعیت مکانی ملک مورد نظر شما</h5>
-                  <div class="box grid-3 gap-30">
+                  <div class="box grid-2 gap-30">
                     <fieldset class="box-fieldset">
                       <label>آدرس/شهر یا محله:<span>*</span></label>
                       {{ form.location }}
                     </fieldset>
                     <fieldset class="box-fieldset">
-                      <label>متراژ:<span>*</span></label>
+                      <label>حداقل متراژ:<span>*</span></label>
                       {{ form.area }}
                     </fieldset>
                     <fieldset class="box-fieldset">
-                      <label>قیمت:<span>*</span></label>
+                      <label>حداکثر بودجه شما:<span>*</span></label>
                       {{ form.price }}
                     </fieldset>
-                  </div>
-                  <h5 class="title">تعداد اتاق</h5>
-                  <div class="box grid-3 gap-30">
                     <fieldset class="box-fieldset">
-                      <label>اتاق خواب:<span>*</span></label>
+                      <label>تعداد خواب:<span>*</span></label>
                       {{ form.num_rooms }}
                     </fieldset>
-                    {% comment %} <fieldset class="box-fieldset">
-                      <label>امکانات رفاهی:</label>
-                      {{ form.facilities }}
-                    </fieldset> {% endcomment %}
                   </div>
+                  <h5 class="title">اطلاعات شخصی</h5>
+                  <div class="box grid-2 gap-30">
+                    <fieldset class="box-fieldset">
+                      <label> نام , نام خانوادگی:</label>
+                      <input class="form-control style-1" type="text" value="کمپانی شما" />
+                    </fieldset>
+                    <fieldset class="box-fieldset">
+                      <label> شماره تماس  :<span>*</span></label> <input class="form-control style-1" type="text" value="" />
+                      </fieldset>
+                  </div>
+                  {% if user.is_authenticated %}
                   <fieldset>
                     <label for="message">پیام شما:</label>
-                    {{ form.message }}
+                    <textarea class="form-control" name="" id="" cols="30" rows="10"></textarea>
                   </fieldset>
-                  {% if user.is_authenticated %}
-                  <div class="custom-wrap advanced-box-btn text-align-center">
-                    <button type="submit" class="custom-tf-btn custom-btn-line">ارسال درخواست</button>
-                  </div>
-                  {% else %}
+                
                   <div class="alert alert-warning mt-5">
                     برای ارسال درخواست باید وارد حساب کاربری خود شوید.
                   </div>
                   <div class="custom-wrap advanced-box-btn text-align-center">
                     <a href="{% url 'accounts:login' %}" class="custom-tf-btn custom-btn-line">ورود به حساب</a>
-                  </div>
+                  </div> 
                   {% endif %}
                 </form>
               </div>
