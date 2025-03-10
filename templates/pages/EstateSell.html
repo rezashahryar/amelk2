@@ -31,7 +31,11 @@
               </form>
           {% else %} {% endcomment %}
               <p  class="alert alert-warning mt-5" >برای ثبت درخواست، لطفاً وارد حساب کاربری خود شوید.</p>
-                <a class="custom-tf-btn custom-btn-line" href="{% url 'accounts:login' %}">ورود</a>
+              {% if user.is_authenticated %}
+              <a class="custom-tf-btn custom-btn-line" href="{% url 'profiles:add_house' %}">ثبت آگهی</a>
+              {% else %}
+              <a class="custom-tf-btn custom-btn-line" href="{% url 'accounts:login' %}">ورود</a>
+              {% endif %}
           {% comment %} {% endif %} {% endcomment %}
       </div>
       </div>

@@ -150,9 +150,6 @@ class AddHouseView(LoginRequiredMixin, AccessControlMixin, generic.FormView):
     # form_class = AddRentPropertyForm
     success_url = reverse_lazy('profiles:my_houses')
 
-    def has_permission(self, request):
-        return bool(request.user.has_perm('models.is_agent'))
-
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['countries'] = Country.objects.all()
