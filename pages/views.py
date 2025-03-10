@@ -23,7 +23,7 @@ class EstateAlquilarView(generic.TemplateView):
 class LearnMoreBuyPageView(generic.FormView):
     template_name = 'pages/learn_more_buy.html'
     form_class = RequestAdviceForm
-    success_url = reverse_lazy('pages:home')
+    success_url = reverse_lazy('pages:learn_more_buy')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -56,7 +56,7 @@ class HomePageView(generic.TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['properties'] = Property.objects.all()
+        context['properties'] = Property.objects.all()[:9]
         return context
 
 
@@ -96,7 +96,7 @@ class HouseDetailView(generic.DetailView):
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['houses'] = Property.objects.filter(show_status=True)
+        context['houses'] = Property.objects.filter(show_status=True)[:4]
         return context
     
 

@@ -11,7 +11,7 @@
         <div class="box-title-listing">
           <div class="box-left">
             <a href="/"> <i class="icon icon-arr-r"></i></a>
-            <h3 class="fw-8"> ملک برای اجاره</h3>
+            <h3 class="fw-8">تمامی آگهی</h3>
           </div>
           <div class="box-filter-tab">
             <ul class="nav-tab-filter" role="tablist">
@@ -98,105 +98,25 @@
           <div class="col-xl-8 col-lg-7 flat-animate-tab">
 
             <div class="tab-content">
-              <div class="widget-box-2 mb-20">
-                <h5 class="title">درخواست مشاوره و اطلاعات بیشتر</h5>
-                {% if messages %}
-                <div class="messages">
-                  {% for message in messages %}
-                  <div class="alert alert-success">{{ message }}</div>
-                  {% endfor %}
-                </div>
-                {% endif %}
-                <form method="post" action="">
-                  {% csrf_token %}
-                  <div class="box grid-3 gap-30">
-                    <fieldset class="box-fieldset">
-                      <label>نوع ملک:<span>*</span></label>
-                      <select name="" class="form-control" id="">
-                        <option value="">آپارتمان</option>
-                        <option value="">ویلا</option>
-                        <option value="">تجاری</option>
-                      </select>
-                    </fieldset>
-                  </div>
-                  <h5 class="title">موقعیت مکانی ملک مورد نظر شما</h5>
-                  <div class="box grid-2 gap-30">
-                    <fieldset class="box-fieldset">
-                      <label>آدرس/شهر یا محله:<span>*</span></label>
-                      <input class="form-control style-1" type="text" value="کمپانی شما" />
-                    </fieldset>
-                    <fieldset class="box-fieldset">
-                      <label>متراژ:<span>*</span></label>
-                      <input class="form-control style-1" type="text" value="کمپانی شما" />
-                    </fieldset>
-                    <fieldset class="box-fieldset">
-                      <label>حداقل قیمت:<span>*</span></label>
-                      <input class="form-control style-1" type="text" value="کمپانی شما" />
-                    </fieldset>
-                    <fieldset class="box-fieldset">
-                      <label>حداکثر قیمت :<span>*</span></label>
-                      <input class="form-control style-1" type="text" value="کمپانی شما" />
-                    </fieldset>
-                    
-                  </div>
-                  <h5 class="title">امکانات</h5>
-                  <div class="box grid-2 gap-30">
-                    <fieldset class="box-fieldset">
-                      <label>اتاق خواب:<span>*</span></label>
-                      <input class="form-control style-1" type="text" value="کمپانی شما" />
-                    </fieldset>
-                    <fieldset class="box-fieldset">
-                      <label>امکانات رفاهی:</label>
-                      <input class="form-control style-1" type="text" value="کمپانی شما" />
-                    </fieldset>
-                  </div>
-                  <h5 class="title">اطلاعات شخصی</h5>
-                  <div class="box grid-2 gap-30">
-                    <fieldset class="box-fieldset">
-                      <label> نام , نام خانوادگی:</label>
-                      <input class="form-control style-1" type="text" value="کمپانی شما" />
-                    </fieldset>
-                    <fieldset class="box-fieldset">
-                      <label> شغل:</label>
-                      <input class="form-control style-1" type="text" value="کمپانی شما" />
-                    </fieldset>
-                    <fieldset class="box-fieldset">
-                    <label> تعداد اعضا خانواده:<span>*</span></label> <input class="form-control style-1" type="number" value="2" />
-                    </fieldset>
-                    <fieldset class="box-fieldset">
-                      <label> شماره تماس  :<span>*</span></label> <input class="form-control style-1" type="text" value="" />
-                      </fieldset>
-                  </div>
-                  <fieldset>
-                    <label for="message">پیام شما:</label>
-                    <textarea class="form-control" name="" id="" cols="30" rows="10"></textarea>
-                  </fieldset>
-                  <div class="custom-wrap advanced-box-btn text-align-center">
-                    <a href="" class="custom-tf-btn custom-btn-line">ورود به حساب</a>
-                  </div>
-                </form>
-              </div>
+              
 
             </div>
 
             <div class="tab-content">
               <div class="tab-pane active show" id="gridLayout" role="tabpanel">
                 <div class="row">
+                  {% for house in houses %}
                   <div class="col-md-6">
                     <div class="homelengo-box">
                       <div class="archive-top">
-                        <a class="images-group" href="">
+                        <a class="images-group" href="{{ house.get_absolute_url }}">
                           <div class="images-style">
-                            <img alt="img" class="lazyload" data-src="{% static 'images/home/house-7.jpg' %}" src="images/home/house-7.jpg" />
+                            <img alt="img" class="lazyload" data-src="{{ house.get_cover_url }}" src="{{ house.get_cover_url }}" />
                           </div>
                           <div class="top">
                             <ul class="d-flex gap-6">
                               <li class="flag-tag primary">برجسته</li>
-                              <li class="flag-tag style-1">برای 
-                               
-                                خرید
-                           
-                                </li>
+                              <li class="flag-tag style-1">برای {{ house.get_transaction_type_display }}</li>
                             </ul>
                           </div>
                           <div class="bottom">
@@ -208,21 +128,21 @@
                               <path
                                 d="M13 7C13 11.7613 8 14.5 8 14.5C8 14.5 3 11.7613 3 7C3 5.67392 3.52678 4.40215 4.46447 3.46447C5.40215 2.52678 6.67392 2 8 2C9.32608 2 10.5979 2.52678 11.5355 3.46447C12.4732 4.40215 13 5.67392 13 7Z"
                                 stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path>
-                            </svg>sdfsdf
+                            </svg>{{ house.location }}
                           </div>
                         </a>
                       </div>
                       <div class="archive-bottom">
                         <div class="content-top">
-                          <h6 class="text-capitalize"><a class="link" href=""> sdfsdfsdf</a></h6>
+                          <h6 class="text-capitalize"><a class="link" href="href="{{ house.get_absolute_url }}"">{{ house.title }}</a></h6>
                           <ul class="meta-list">
                             <li class="item">
                               <i class="icon icon-bed"></i> <span class="text-variant-1">اتاق:</span> <span
-                                class="fw-6">sdfsdfsdf</span>
+                                class="fw-6">{{ house.num_rooms }}</span>
                             </li>
                             <li class="item">
                               <i class="icon icon-متر مربع"></i> <span class="text-variant-1">متر مربع:</span> <span
-                                class="fw-6">sdfsdf</span>
+                                class="fw-6">{{ house.area }}</span>
                             </li>
                           </ul>
                         </div>
@@ -230,122 +150,19 @@
                           <div class="d-flex gap-8 align-items-center">
                             <div class="avatar avt-40 round">
                               <img alt="avt" src="{{ property.user.avatar.url }}" />
-                            </div><span>rasdgsd</span>
+                            </div><span>{{ house.user }}</span>
                           </div>
-                          <h6 class="price">121312</h6>
+                          {% if house.rent_info %}
+                          {% comment %} <h6 class="price">پیش پرداخت: {{ house.rent_info.deposit|intcomma:False }} تومان</h6> {% endcomment %}
+                          <h6 class="price">اجاره ماهیانه: {{ house.rent_info.monthly_rent|intcomma:False }} تومان</h6>
+                          {% elif house.sale_info %}
+                          <h6 class="price">قیمت: {{ house.sale_info.price|intcomma:False }} تومان</h6>
+                          {% endif %}
                         </div>
                       </div>
                     </div>
                   </div>
-                  <div class="col-md-6">
-                    <div class="homelengo-box">
-                      <div class="archive-top">
-                        <a class="images-group" href="">
-                          <div class="images-style">
-                            <img alt="img" class="lazyload" data-src="{% static 'images/home/house-7.jpg' %}" src="images/home/house-7.jpg" />
-                          </div>
-                          <div class="top">
-                            <ul class="d-flex gap-6">
-                              <li class="flag-tag primary">برجسته</li>
-                              <li class="flag-tag style-1">برای 
-                               
-                                خرید
-                           
-                                </li>
-                            </ul>
-                          </div>
-                          <div class="bottom">
-                            <svg fill="none" height="16" viewbox="0 0 16 16" width="16"
-                              xmlns="http://www.w3.org/2000/svg">
-                              <path
-                                d="M10 7C10 7.53043 9.78929 8.03914 9.41421 8.41421C9.03914 8.78929 8.53043 9 8 9C7.46957 9 6.96086 8.78929 6.58579 8.41421C6.21071 8.03914 6 7.53043 6 7C6 6.46957 6.21071 5.96086 6.58579 5.58579C6.96086 5.21071 7.46957 5 8 5C8.53043 5 9.03914 5.21071 9.41421 5.58579C9.78929 5.96086 10 6.46957 10 7Z"
-                                stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path>
-                              <path
-                                d="M13 7C13 11.7613 8 14.5 8 14.5C8 14.5 3 11.7613 3 7C3 5.67392 3.52678 4.40215 4.46447 3.46447C5.40215 2.52678 6.67392 2 8 2C9.32608 2 10.5979 2.52678 11.5355 3.46447C12.4732 4.40215 13 5.67392 13 7Z"
-                                stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path>
-                            </svg>sdfsdf
-                          </div>
-                        </a>
-                      </div>
-                      <div class="archive-bottom">
-                        <div class="content-top">
-                          <h6 class="text-capitalize"><a class="link" href=""> sdfsdfsdf</a></h6>
-                          <ul class="meta-list">
-                            <li class="item">
-                              <i class="icon icon-bed"></i> <span class="text-variant-1">اتاق:</span> <span
-                                class="fw-6">sdfsdfsdf</span>
-                            </li>
-                            <li class="item">
-                              <i class="icon icon-متر مربع"></i> <span class="text-variant-1">متر مربع:</span> <span
-                                class="fw-6">sdfsdf</span>
-                            </li>
-                          </ul>
-                        </div>
-                        <div class="content-bottom">
-                          <div class="d-flex gap-8 align-items-center">
-                            <div class="avatar avt-40 round">
-                              <img alt="avt" src="{{ property.user.avatar.url }}" />
-                            </div><span>rasdgsd</span>
-                          </div>
-                          <h6 class="price">121312</h6>
-                        </div>
-                      </div>
-                    </div>
-                  </div>                  <div class="col-md-6">
-                    <div class="homelengo-box">
-                      <div class="archive-top">
-                        <a class="images-group" href="">
-                          <div class="images-style">
-                            <img alt="img" class="lazyload" data-src="{% static 'images/home/house-7.jpg' %}" src="images/home/house-7.jpg" />
-                          </div>
-                          <div class="top">
-                            <ul class="d-flex gap-6">
-                              <li class="flag-tag primary">برجسته</li>
-                              <li class="flag-tag style-1">برای 
-                               
-                                خرید
-                           
-                                </li>
-                            </ul>
-                          </div>
-                          <div class="bottom">
-                            <svg fill="none" height="16" viewbox="0 0 16 16" width="16"
-                              xmlns="http://www.w3.org/2000/svg">
-                              <path
-                                d="M10 7C10 7.53043 9.78929 8.03914 9.41421 8.41421C9.03914 8.78929 8.53043 9 8 9C7.46957 9 6.96086 8.78929 6.58579 8.41421C6.21071 8.03914 6 7.53043 6 7C6 6.46957 6.21071 5.96086 6.58579 5.58579C6.96086 5.21071 7.46957 5 8 5C8.53043 5 9.03914 5.21071 9.41421 5.58579C9.78929 5.96086 10 6.46957 10 7Z"
-                                stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path>
-                              <path
-                                d="M13 7C13 11.7613 8 14.5 8 14.5C8 14.5 3 11.7613 3 7C3 5.67392 3.52678 4.40215 4.46447 3.46447C5.40215 2.52678 6.67392 2 8 2C9.32608 2 10.5979 2.52678 11.5355 3.46447C12.4732 4.40215 13 5.67392 13 7Z"
-                                stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path>
-                            </svg>sdfsdf
-                          </div>
-                        </a>
-                      </div>
-                      <div class="archive-bottom">
-                        <div class="content-top">
-                          <h6 class="text-capitalize"><a class="link" href=""> sdfsdfsdf</a></h6>
-                          <ul class="meta-list">
-                            <li class="item">
-                              <i class="icon icon-bed"></i> <span class="text-variant-1">اتاق:</span> <span
-                                class="fw-6">sdfsdfsdf</span>
-                            </li>
-                            <li class="item">
-                              <i class="icon icon-متر مربع"></i> <span class="text-variant-1">متر مربع:</span> <span
-                                class="fw-6">sdfsdf</span>
-                            </li>
-                          </ul>
-                        </div>
-                        <div class="content-bottom">
-                          <div class="d-flex gap-8 align-items-center">
-                            <div class="avatar avt-40 round">
-                              <img alt="avt" src="{{ property.user.avatar.url }}" />
-                            </div><span>rasdgsd</span>
-                          </div>
-                          <h6 class="price">121312</h6>
-                        </div>
-                      </div>
-                    </div>
-                  </div>       
+                  {% endfor %}      
                 </div>
              
               </div>

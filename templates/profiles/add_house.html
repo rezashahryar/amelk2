@@ -173,6 +173,10 @@
                           <p class="alert alert-danger text-center mt-2">{{ error }}</p>
                         {% endfor %}
                       </fieldset>
+                      <fieldset class="box-fieldset">  
+                        <label>سال ساخت:<span>*</span></label>  
+                        <input name="year_construction" class="form-control" type="text" />  
+                    </fieldset>  
                       <fieldset class="box-fieldset">
                         <label>تعداد خواب ها:<span>*</span></label>
                         <input name="num_rooms" class="form-control" type="text" />
@@ -180,13 +184,11 @@
                           <p class="alert alert-danger text-center mt-2">{{ error }}</p>
                         {% endfor %}
                       </fieldset>
-  
-                    </div>
-                    <div class="box grid-3 gap-30">
                       <fieldset class="box-fieldset">  
                         <label>امکانات:<span>*</span></label>  
                         <input name="facilities" class="form-control" type="text" />  
                     </fieldset>  
+  
                     <fieldset class="box-fieldset">  
                       <label>پارکینگ:<span>*</span></label>  
                       {{ form.parking|add_class:"nice-select" }}
@@ -196,6 +198,8 @@
                           <option value="no">ندارد</option>  
                       </select>   {% endcomment %}
                   </fieldset>  
+                    </div>
+                    <div class="box grid-3 gap-30">
                   <fieldset class="box-fieldset">  
                       <label>آسانسور:<span>*</span></label>  
                       {{ form.elevator|add_class:"nice-select" }}

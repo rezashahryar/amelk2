@@ -180,15 +180,19 @@ class AddHouseView(LoginRequiredMixin, AccessControlMixin, generic.FormView):
             elevator=data['elevator'],
         )
         query = dict(self.request.POST)
-        try:
-            if not query['num_rooms'][0] == '':
-                property.num_rooms = query['num_rooms'][0]
-        except:
+        if not query['year_construction'][0] == '':
+            property.year_construction = query['year_construction'][0]
+        else:
+            print(query['year_construction'][1])
+            property.year_construction = query['year_construction'][1]
+        if not query['num_rooms'][0] == '':
+            property.num_rooms = query['num_rooms'][0]
+        else:
             property.num_rooms = query['num_rooms'][1]
-        try:
-            if not query['area'][0] == '':
-                property.area = query['area'][0]
-        except:
+
+        if not query['area'][0] == '':
+            property.area = query['area'][0]
+        else:
             property.area = query['area'][1]
         try:
             property.company_id=self.request.user.company.pk
@@ -231,9 +235,6 @@ class ManagePropertyImageView(LoginRequiredMixin, AccessControlMixin, generic.Fo
     form_class = AddPropertyImageForm
     template_name = 'profiles/manage_property_image.html'
     success_url = reverse_lazy('profiles:manage_property_image')
-
-    def has_permission(self, request):
-        return bool(request.user.has_perm('models.is_agent'))
 
     def form_valid(self, form):
         form.save()

@@ -41,6 +41,7 @@ class AddHouseBaseForm(forms.ModelForm):
     num_rooms = forms.IntegerField(initial=0, required=False)
     num_bedrooms = forms.IntegerField(initial=0, required=False)
     num_bathrooms = forms.IntegerField(initial=0, required=False)
+    year_construction = forms.IntegerField()
     parking = forms.ChoiceField(
         choices=(
             ('d', 'دارد'),

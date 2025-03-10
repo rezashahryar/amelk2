@@ -47,16 +47,16 @@
                               <a href="{% url 'pages:home' %}">خانه</a>
                              
                             </li>
-                            <li class="dropdown2">
+                            <li class="">
                               <a href="{% url 'pages:house_list' %}">لیست آگهی ها</a>
-                               <ul>
+                               {% comment %} <ul>
                                 <li>
                                   <a href="{% url 'pages:house_list' %}">برای فروش</a>
                                 </li>
                                 <li>
                                   <a href="property-halfmap-list.html">برای اجاره</a>
                                 </li>
-                              </ul> 
+                              </ul>  {% endcomment %}
                             </li>
 
                             

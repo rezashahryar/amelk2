@@ -97,7 +97,7 @@ class Property(models.Model):
     num_bathrooms = models.PositiveIntegerField(default=0, verbose_name=' تعداد حمام ها', null=True, blank=True)
     parking = models.CharField(max_length=1, choices=HasParking.choices)
     elevator = models.CharField(max_length=1, choices=HasParking.choices)
-    year_construction = models.CharField(max_length=4, validators=[validate_integer], verbose_name='سال ساخت', null=True, blank=True)
+    year_construction = models.CharField(max_length=4, validators=[validate_integer], verbose_name='سال ساخت')
     transaction_type = models.CharField(
         max_length=10,
         choices=TRANSACTION_TYPES,
