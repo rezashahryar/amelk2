@@ -25,18 +25,33 @@
       {% csrf_token %}
       <label for="full_name">نام و نام خانوادگی</label>
       <input type="text" name="full_name" id="full_name" placeholder="نام و نام خانوادگی" required>
+      {% for error in register_form.full_name.errors %}
+        <p class="alert alert-danger text-center">{{ error }}</p>
+      {% endfor %}
       
       <label for="mobile">شماره موبایل</label>
       <input type="text" name="mobile" id="mobile" placeholder="شماره موبایل" required>
+      {% for error in register_form.mobile.errors %}
+        <p class="alert alert-danger text-center">{{ error }}</p>
+      {% endfor %}
       
       <label for="email">ایمیل</label>
       <input type="email" name="email" id="email" placeholder="ایمیل" required>
+      {% for error in register_form.email.errors %}
+        <p class="alert alert-danger text-center">{{ error }}</p>
+      {% endfor %}
       
       <label for="password">رمز عبور</label>
       <input type="password" name="password" id="password" placeholder="رمز عبور" required>
+      {% for error in register_form.password.errors %}
+        <p class="alert alert-danger text-center">{{ error }}</p>
+      {% endfor %}
       
       <label for="confirm-password">تکرار رمز عبور</label>
       <input type="password" name="password2" id="confirm-password" placeholder="تکرار رمز عبور" required>
+      {% for error in register_form.password2.errors %}
+        <p class="alert alert-danger text-center">{{ error }}</p>
+      {% endfor %}
       
       <button type="submit" class="button">ثبت‌نام</button>
       

@@ -63,7 +63,7 @@ class RealStateCompany(models.Model):
 
 class Property(models.Model):
     TRANSACTION_TYPES = (
-        ('sale', 'فروش'),
+        ('sell', 'فروش'),
         ('rent', 'اجاره'),
     )
     class PROPERTY_TYPE(models.TextChoices):
@@ -71,8 +71,13 @@ class Property(models.Model):
         OFFICE = 'o', 'اداری'
         APARTMENT = 'a', 'آپارتمان'
         HOUSE = 'h', 'خانه'
+
+    class HasParking(models.TextChoices):
+        HAS = 'd', 'دارد'
+        HAS_NOT = 'n', 'ندارد'
     
     house_type = models.CharField(max_length=1, choices=PROPERTY_TYPE.choices, null=True, verbose_name='نوع خانه')
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='properties', null=True, blank=True)
     company = models.ForeignKey(RealStateCompany, on_delete=models.CASCADE, related_name='houses', null=True, verbose_name='بنگاه املاک')
     title = models.CharField(max_length=200, verbose_name='عنوان')
     description = models.TextField(verbose_name='توضیحات')
@@ -85,20 +90,20 @@ class Property(models.Model):
     house_plan = models.FileField(upload_to='property-plan/', null=True, blank=True, verbose_name='نقشه ملک')
     city = models.ForeignKey(City, on_delete=models.CASCADE, related_name='houses', verbose_name='شهر')
     area = models.PositiveIntegerField(verbose_name='متراژ (متر مربع)')
-    land_area = models.PositiveIntegerField(default=0, verbose_name='متراژ زمین')
-    house_id = models.CharField(max_length=255, verbose_name='شناسه ملک')
+    land_area = models.PositiveIntegerField(default=0, verbose_name='متراژ زمین', null=True, blank=True)
+    house_id = models.CharField(max_length=255, verbose_name='شناسه ملک', null=True, blank=True)
     num_rooms = models.PositiveIntegerField(verbose_name='تعداد اتاقها')
-    num_bedrooms = models.PositiveIntegerField(default=0, verbose_name='تعداد اتاق خواب ها')
-    num_bathrooms = models.PositiveIntegerField(default=0, verbose_name=' تعداد حمام ها')
-    num_garage = models.PositiveIntegerField(default=0, verbose_name='تعداد جای پارک ماشین')
-    garage_area = models.PositiveIntegerField(default=0, verbose_name='متراژ پارکینگ')
-    year_construction = models.CharField(max_length=4, validators=[validate_integer], verbose_name='سال ساخت')
+    num_bedrooms = models.PositiveIntegerField(default=0, verbose_name='تعداد اتاق خواب ها', null=True, blank=True)
+    num_bathrooms = models.PositiveIntegerField(default=0, verbose_name=' تعداد حمام ها', null=True, blank=True)
+    parking = models.CharField(max_length=1, choices=HasParking.choices)
+    elevator = models.CharField(max_length=1, choices=HasParking.choices)
+    year_construction = models.CharField(max_length=4, validators=[validate_integer], verbose_name='سال ساخت', null=True, blank=True)
     transaction_type = models.CharField(
         max_length=10,
         choices=TRANSACTION_TYPES,
         verbose_name='نوع معامله',
     )
-    facilities = models.ManyToManyField('Facility', blank=True, verbose_name='دسترسی ها')
+    facilities = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
     modified_at = models.DateTimeField(auto_now=True)
 

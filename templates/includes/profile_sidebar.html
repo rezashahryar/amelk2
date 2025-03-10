@@ -56,7 +56,6 @@
           </svg>حساب کاربری
         </a>
       </li>
-      {% if user.is_agent %}
         {% url 'profiles:company_info' as profile_company_info_url %}
         <li class="nav-menu-item {% if request.path == profile_company_info_url %}active{% endif %}">
           <a class="nav-menu-link" href="{{ profile_company_info_url }}">
@@ -90,7 +89,6 @@
             </svg>آگهی های من
           </a>
         </li>
-      {% endif %}
       {% url 'profiles:favorites' as profile_favorites_url %}
       <li class="nav-menu-item {% if request.path == profile_favorites_url %}active{% endif %}">
         <a class="nav-menu-link" href="{{ profile_favorites_url }}">
@@ -102,7 +100,6 @@
           </svg>مورد علاقه من
         </a>
       </li>
-      {% if user.is_agent %}
         {% comment %} <li class="nav-menu-item">
           <a class="nav-menu-link" href="message.html">
             <svg fill="none" height="22" viewbox="0 0 22 22" width="22" xmlns="http://www.w3.org/2000/svg">
@@ -145,7 +142,6 @@
             </svg>افزودن عکس آگهی
           </a>
         </li>
-      {% endif %}
       <li class="nav-menu-item">
         <a class="nav-menu-link" href="{% url 'accounts:logout' %}">
           <svg fill="none" height="22" viewbox="0 0 22 22" width="22" xmlns="http://www.w3.org/2000/svg">

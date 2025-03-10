@@ -108,23 +108,28 @@
                   </fieldset>
                     <fieldset class="box-fieldset">  
                       <label>پارکینگ:<span>*</span></label>  
-                      <select name="parking" class="nice-select">  
+                      {{ form.parking|add_class:"nice-select" }}
+                      {% comment %} <select name="parking" class="nice-select">  
                           <option value="">انتخاب کنید</option>  
                           <option value="yes">دارد</option>  
                           <option value="no">ندارد</option>  
-                      </select>  
+                      </select>   {% endcomment %}
                   </fieldset>  
                   <fieldset class="box-fieldset">  
                     <label>آسانسور:<span>*</span></label>  
-                    <select name="elevator" class="nice-select">  
+                    {{ form.elevator|add_class:"nice-select" }}
+                    {% comment %} <select name="elevator" class="nice-select">  
                         <option value="">انتخاب کنید</option>  
                         <option value="yes">دارد</option>  
                         <option value="no">ندارد</option>  
-                    </select>   
+                    </select>    {% endcomment %}
                   </fieldset>
                   <fieldset class="box-fieldset">  
                     <label>تعداد خواب:<span>*</span></label>  
-                    <input name="num_bedrooms" class="form-control" type="text" />  
+                    <input name="num_rooms" class="form-control" type="text" /> 
+                    {% for error in form.num_rooms.errors %}
+                      <p class="alert alert-danger text-center mt-2">{{ error }}</p>
+                    {% endfor %} 
                 </fieldset> 
                   
                     </div> 
@@ -149,7 +154,7 @@
                     </fieldset>  
                     <fieldset class="box-fieldset">  
                         <label>متراژ:<span>*</span></label>  
-                        <input name="rent_area" class="form-control" type="text" />  
+                        <input name="area" class="form-control" type="text" />  
                     </fieldset>
                     </div>
                     <div class="box grid-3 gap-30">
@@ -163,15 +168,15 @@
                       </fieldset>  
                       <fieldset class="box-fieldset">
                         <label>اجاره ماهیانه:<span>*</span></label>
-                        <input name="rent_amount" class="form-control" type="text" />
+                        <input name="monthly_rent" class="form-control" type="text" />
                         {% for error in form.monthly_rent.errors %}
                           <p class="alert alert-danger text-center mt-2">{{ error }}</p>
                         {% endfor %}
                       </fieldset>
                       <fieldset class="box-fieldset">
                         <label>تعداد خواب ها:<span>*</span></label>
-                        <input name="num_bedrooms" class="form-control" type="text" />
-                        {% for error in form.num_bedrooms.errors %}
+                        <input name="num_rooms" class="form-control" type="text" />
+                        {% for error in form.num_rooms.errors %}
                           <p class="alert alert-danger text-center mt-2">{{ error }}</p>
                         {% endfor %}
                       </fieldset>
@@ -180,23 +185,25 @@
                     <div class="box grid-3 gap-30">
                       <fieldset class="box-fieldset">  
                         <label>امکانات:<span>*</span></label>  
-                        <input name="amenities" class="form-control" type="text" />  
+                        <input name="facilities" class="form-control" type="text" />  
                     </fieldset>  
                     <fieldset class="box-fieldset">  
                       <label>پارکینگ:<span>*</span></label>  
-                      <select name="rent_parking" class="nice-select">  
+                      {{ form.parking|add_class:"nice-select" }}
+                      {% comment %} <select name="rent_parking" class="nice-select">  
                           <option value="">انتخاب کنید</option>  
                           <option value="yes">دارد</option>  
                           <option value="no">ندارد</option>  
-                      </select>  
+                      </select>   {% endcomment %}
                   </fieldset>  
                   <fieldset class="box-fieldset">  
                       <label>آسانسور:<span>*</span></label>  
-                      <select name="rent_elevator" class="nice-select">  
+                      {{ form.elevator|add_class:"nice-select" }}
+                      {% comment %} <select name="rent_elevator" class="nice-select">  
                           <option value="">انتخاب کنید</option>  
                           <option value="yes">دارد</option>  
                           <option value="no">ندارد</option>  
-                      </select>  
+                      </select>   {% endcomment %}
                   </fieldset>  
                     
                     
@@ -289,20 +296,20 @@
               
                
                 
-                <div class="widget-box-2 mb-20">
+                {% comment %} <div class="widget-box-2 mb-20">
                   <h5 class="title">ویدیوها</h5>
                   <fieldset class="box-fieldset">
                     <label class="text-btn">آدرس ویدیو:</label>
                     <input name="video" class="form-control" type="file" />
                   </fieldset>
-                </div>
-                <div class="widget-box-2 mb-20">
+                </div> {% endcomment %}
+                {% comment %} <div class="widget-box-2 mb-20">
                   <h5 class="title">نقشه خانه</h5>
                   <fieldset class="box-fieldset">
                     <label class="text-btn">آدرس ویدیو:</label>
                     <input name="house_plan" class="form-control" type="file" />
                   </fieldset>
-                </div>
+                </div> {% endcomment %}
               
                 <div class="box-btn">
                   {% comment %} <a class="tf-btn primary" href="#">اموال اضافه کردن</a> {% endcomment %}

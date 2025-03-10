@@ -31,23 +31,29 @@ class AddHouseBaseForm(forms.ModelForm):
     )
     transaction_type = forms.ChoiceField(
         choices=(
-            ('sale', 'برای فروش'),
+            ('sell', 'برای فروش'),
             ('rent', 'برای اجاره')
         ),
         widget=forms.Select(attrs={'class': 'nice-select'})
     )
     address = forms.CharField()
-    area = forms.IntegerField(initial=0)
-    land_area = forms.IntegerField(initial=0)
-    house_id = forms.IntegerField(initial=0)
-    num_rooms = forms.IntegerField(initial=0)
-    num_bedrooms = forms.IntegerField(initial=0)
-    num_bathrooms = forms.IntegerField(initial=0)
-    num_garage = forms.IntegerField(initial=0)
-    garage_area = forms.IntegerField(initial=0)
-    year_construction = forms.IntegerField()
-    video = forms.FileField(required=False)
-    house_plan = forms.FileField(required=False)
+    area = forms.IntegerField(initial=0, required=False)
+    num_rooms = forms.IntegerField(initial=0, required=False)
+    num_bedrooms = forms.IntegerField(initial=0, required=False)
+    num_bathrooms = forms.IntegerField(initial=0, required=False)
+    parking = forms.ChoiceField(
+        choices=(
+            ('d', 'دارد'),
+            ('n', 'ندارد')
+        )
+    )
+    elevator = forms.ChoiceField(
+        choices=(
+            ('d', 'دارد'),
+            ('n', 'ندارد')
+        )
+    )
+    facilities = forms.CharField(required=False)
 
     class Meta:
         ...
@@ -87,8 +93,8 @@ class EditPropertyForm(forms.ModelForm):
         model = Property
         fields = [
             'title', 'description', 'address', 'post_code', 'cover', 'country', 'province', 'city', 'area',
-            'land_area', 'house_id', 'num_rooms', 'num_bedrooms', 'num_bathrooms', 'num_garage',
-            'garage_area', 'year_construction', 'transaction_type'
+            'land_area', 'house_id', 'num_rooms', 'num_bedrooms', 'num_bathrooms', 'year_construction',
+            'transaction_type',
         ]
         widgets = {
             'address': forms.TextInput,

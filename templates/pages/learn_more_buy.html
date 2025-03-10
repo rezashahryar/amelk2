@@ -124,16 +124,16 @@
                       <div class="col-md-6">
                         <div class="homelengo-box">
                           <div class="archive-top">
-                            <a class="images-group" href="">
+                            <a class="images-group" href="{{ property.property.get_absolute_url }}">
                               <div class="images-style">
-                                <img alt="img" class="lazyload" data-src="{% static 'images/home/house-7.jpg' %}" src="images/home/house-7.jpg" />
+                                <img alt="img" class="lazyload" data-src="{{ property.property.get_cover_url }}" src="{{ property.property.get_cover_url }}" />
                               </div>
                               <div class="top">
                                 <ul class="d-flex gap-6">
                                   <li class="flag-tag primary">برجسته</li>
                                   <li class="flag-tag style-1">
-                                    برای{% if property.ad_type == 'PURCHASE' %}
-                                      خرید
+                                    {% if property.property.transaction_type == 'sell' %}
+                                    برای خرید
                                     {% endif %}
                                   </li>
                                 </ul>
@@ -148,23 +148,23 @@
                           </div>
                           <div class="archive-bottom">
                             <div class="content-top">
-                              <h6 class="text-capitalize"><a class="link" href="{% url 'HomeApp:HouseDetails' property.id %}">{{ property.title }}</a></h6>
+                              <h6 class="text-capitalize"><a class="link" href="{{ property.property.get_absolute_url }}">{{ property.property.title }}</a></h6>
                               <ul class="meta-list">
                                 <li class="item">
-                                  <i class="icon icon-bed"></i> <span class="text-variant-1">اتاق:</span> <span class="fw-6">{{ property.num_bedrooms }}</span>
+                                  <i class="icon icon-bed"></i> <span class="text-variant-1">اتاق:</span> <span class="fw-6">{{ property.property.num_rooms }}</span>
                                 </li>
                                 <li class="item">
-                                  <i class="icon icon-متر مربع"></i> <span class="text-variant-1">متر مربع:</span> <span class="fw-6">{{ property.area }}</span>
+                                  <i class="icon icon-متر مربع"></i> <span class="text-variant-1">متر مربع:</span> <span class="fw-6">{{ property.property.area }}</span>
                                 </li>
                               </ul>
                             </div>
                             <div class="content-bottom">
                               <div class="d-flex gap-8 align-items-center">
                                 <div class="avatar avt-40 round">
-                                  <img alt="avt" src="{{ property.user.avatar.url }}" />
+                                  {% comment %} <img alt="avt" src="{{ property.property.user.avatar.url }}" /> {% endcomment %}
                                 </div><span>{{ property.user.email }}</span>
                               </div>
-                              <h6 class="price">{{ property.price_min }}</h6>
+                              <h6 class="price">{{ property.price }} تومان</h6>
                             </div>
                           </div>
                         </div>

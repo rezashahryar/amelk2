@@ -5,7 +5,7 @@ from django.shortcuts import get_object_or_404, redirect
 from django.views import generic
 from django.contrib import messages
 
-from models.models import Property, FavoriteProperty
+from models.models import Property, FavoriteProperty, SaleInfo, RentInfo
 
 from .forms import PropertyCommentForm, AddHomeVisitRequestForm, RequestAdviceForm
 # Create your views here.
@@ -14,11 +14,21 @@ from .forms import PropertyCommentForm, AddHomeVisitRequestForm, RequestAdviceFo
 class EstateAlquilarView(generic.TemplateView):
     template_name = 'pages/EstateAlquilar.html'
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['properties'] = RentInfo.objects.all()
+        return context
+
 
 class LearnMoreBuyPageView(generic.FormView):
     template_name = 'pages/learn_more_buy.html'
     form_class = RequestAdviceForm
     success_url = reverse_lazy('pages:home')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['buy_properties'] = SaleInfo.objects.all()
+        return context
 
     def form_valid(self, form):
         form.save()

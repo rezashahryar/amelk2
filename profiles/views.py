@@ -99,11 +99,10 @@ class HouseListView(LoginRequiredMixin, AccessControlMixin, generic.ListView):
     context_object_name = 'houses'
     paginate_by = 10
 
-    def has_permission(self, request):
-        return bool(request.user.has_perm('models.is_agent'))
-
     def get_queryset(self):
         queryset = Property.objects.filter(company__user_id=self.request.user.pk).order_by('-created_at')
+        if len(queryset) == 0:
+            queryset = Property.objects.filter(user_id=self.request.user.pk).order_by('-created_at')
         return queryset
     
 
@@ -162,9 +161,9 @@ class AddHouseView(LoginRequiredMixin, AccessControlMixin, generic.FormView):
         return AddRentPropertyForm
 
     def form_valid(self, form):
+        print(self.request.POST)
         data = form.cleaned_data
-        property = Property.objects.create(
-            company_id=self.request.user.company.pk,
+        property = Property(
             title=data['title'],
             description=data['description'],
             address=data['address'],
@@ -175,20 +174,27 @@ class AddHouseView(LoginRequiredMixin, AccessControlMixin, generic.FormView):
             province=data['province'],
             city=data['city'],
             area=data['area'],
-            land_area=data['land_area'],
-            house_id=data['house_id'],
             num_rooms=data['num_rooms'],
-            num_bedrooms=data['num_bedrooms'],
-            num_bathrooms=data['num_bathrooms'],
-            num_garage=data['num_garage'],
-            garage_area=data['garage_area'],
-            year_construction=data['year_construction'],
             transaction_type=data['transaction_type'],
-            video=data['video'],
-            house_plan=data['house_plan'],
+            parking=data['parking'],
+            elevator=data['elevator'],
         )
-        querydict = dict(self.request.POST)
-        property.facilities.set(querydict['fac'])
+        query = dict(self.request.POST)
+        try:
+            if not query['num_rooms'][0] == '':
+                property.num_rooms = query['num_rooms'][0]
+        except:
+            property.num_rooms = query['num_rooms'][1]
+        try:
+            if not query['area'][0] == '':
+                property.area = query['area'][0]
+        except:
+            property.area = query['area'][1]
+        try:
+            property.company_id=self.request.user.company.pk
+        except:
+            ...
+        property.facilities = query['facilities']
         property.save()
         new_form = form.save(commit=False)
         new_form.property_id = property.id
@@ -196,6 +202,12 @@ class AddHouseView(LoginRequiredMixin, AccessControlMixin, generic.FormView):
         messages.success(self.request, 'آگهی شما با موفقیت ثبت شد')
         return super().form_valid(form)
     
+    def form_invalid(self, form):
+        print('+=' * 40)
+        print(self.request.POST)
+        print(form.errors)
+        return super().form_invalid(form)
+
 
 @require_GET
 def get_provinces(request):
