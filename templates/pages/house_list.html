@@ -134,7 +134,9 @@
                       </div>
                       <div class="archive-bottom">
                         <div class="content-top">
-                          <h6 class="text-capitalize"><a class="link" href="{{ house.get_absolute_url }}"">{{ house.title }}</a></h6>
+                          <h6 class="text-capitalize">
+                            <a class="link" href="{{ house.get_absolute_url }}">{{ house.title }}</a>
+                          </h6>
                           <ul class="meta-list">
                             <li class="item">
                               <i class="icon icon-bed"></i> <span class="text-variant-1">اتاق:</span> <span
@@ -162,6 +164,8 @@
                       </div>
                     </div>
                   </div>
+                  {% empty %}
+                  <p class="alert alert-danger text-center">آگهی موجود نمی باشد</p>
                   {% endfor %}      
                 </div>
              

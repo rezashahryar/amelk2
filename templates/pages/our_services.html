@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block content %}
-        <section class="flat-title-page" style="background-image:url(images/page-title/page-title-5.jpg)">
+        <section class="flat-title-page" style="background-image:url({% static 'images/page-title/page-title-5.jpg' %})">
           <div class="container">
             <div class="breadcrumb-content">
               <ul class="breadcrumb">
@@ -23,26 +23,29 @@
             <div class="tf-grid-layout md-col-3 wow fadeInUpSmall" data-wow-delay=".4s" data-wow-duration="2000ms">
               <div class="box-service">
                 <div class="image">
-                  <img alt="image-location" class="lazyload" data-src="images/service/home-1.png" src="images/service/home-1.png" />
+                  <img alt="image-location" class="lazyload" data-src="{% static 'images/service/home-1.png' %}" src="{% static 'images/service/home-1.png' %}" />
                 </div>
                 <div class="content">
-                  <h5 class="title">خرید خانه جدید</h5><p class="description">خانه رویایی خود را بدون زحمت کشف کنید. برای یک تجربه خرید بی‌نظیر، ویژگی ها متنوع و راهنمایی‌های متخصص را کاوش کنید.</p><a class="tf-btn btn-line" href="sidebar-grid.html">بیشتر بدانید<span class="icon icon-arrow-left2"></span></a>
+                  <h5 class="title">خرید ملک</h5>
+            <p class="description">بهترین ملک‌ های زاهدان منتظرتن همین حالا خونه جدیدت رو با یه کلیک بخر</p><a class="tf-btn btn-line" href="{% url 'pages:learn_more_buy' %}">وارد شو<span class="icon icon-arrow-left2"></span></a>
                 </div>
               </div>
               <div class="box-service">
                 <div class="image">
-                  <img alt="image-location" class="lazyload" data-src="images/service/home-2.png" src="images/service/home-2.png" />
+                  <img alt="image-location" class="lazyload" data-src="{% static 'images/service/home-2.png' %}" src="{% static 'images/service/home-2.png' %}" />
                 </div>
                 <div class="content">
-                  <h5 class="title">فروش خانه</h5><p class="description">با راهنمایی های متخصص و استراتژی های موثر، با اطمینان کامل بفروشید، بهترین ویژگی های ملک خود را برای فروش موفق به نمایش بگذارید.</p><a class="tf-btn btn-line" href="sidebar-grid.html">بیشتر بدانید<span class="icon icon-arrow-left2"></span></a>
+                  <h5 class="title">فروش ملک</h5>
+            <p class="description">باآملک، ملکت رو سریع ، راحت و به بهترین قیمت بفروش!</p><a class="tf-btn btn-line" href="{% url 'pages:learn_more_sell' %}">وارد شو<span class="icon icon-arrow-left2"></span></a>
                 </div>
               </div>
               <div class="box-service">
                 <div class="image">
-                  <img alt="image-location" class="lazyload" data-src="images/service/home-3.png" src="images/service/home-3.png" />
+                  <img alt="image-location" class="lazyload" data-src="{% static 'images/service/home-3.png' %}" src="{% static 'images/service/home-3.png' %}" />
                 </div>
                 <div class="content">
-                  <h5 class="title">اجاره خانه</h5><p class="description">اجاره کامل خود را بدون زحمت کشف کنید. فهرست های متنوعی را که دقیقاً مطابق با نیازهای سبک زندگی منحصر به فرد شما طراحی شده اند، کاوش کنید.</p><a class="tf-btn btn-line" href="sidebar-grid.html">بیشتر بدانید<span class="icon icon-arrow-left2"></span></a>
+                  <h5 class="title">اجاره ملک</h5>
+            <p class="description">اینجا ملک اجاره کنید یا به اجاره بگذارید</p><a class="tf-btn btn-line" href="{% url 'pages:r' %}">وارد شو<span class="icon icon-arrow-left2"></span></a>
                 </div>
               </div>
             </div>
