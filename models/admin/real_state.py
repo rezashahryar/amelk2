@@ -1,5 +1,5 @@
 from django.contrib import admin
-from models.models import RequestAdvice, HomeAccess, Amenities, PropertyImage, FavoriteProperty, HomeVisitRequest, PropertyComment, Property, Province, City, Country, Facility, SaleInfo, RentInfo, RealStateCompany
+from models.models import EstateRentRequest, RequestAdvice, HomeAccess, Amenities, PropertyImage, FavoriteProperty, HomeVisitRequest, PropertyComment, Property, Province, City, Country, Facility, SaleInfo, RentInfo, RealStateCompany
 
 
 @admin.register(RequestAdvice)
@@ -39,6 +39,11 @@ class PropertyCommentAdmin(admin.ModelAdmin):
 
 @admin.register(RealStateCompany)
 class RealStateCompanyAdmin(admin.ModelAdmin):
+    ...
+
+
+@admin.register(EstateRentRequest)
+class EstateRentRequestAdmin(admin.ModelAdmin):
     ...
 
 

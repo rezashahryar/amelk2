@@ -1,5 +1,14 @@
 from django import forms
-from models.models import PropertyComment, HomeVisitRequest, RequestAdvice
+from models.models import PropertyComment, HomeVisitRequest, RequestAdvice, Property, EstateRentRequest
+
+
+class EstateRentForm(forms.ModelForm):
+    class Meta:
+        model = EstateRentRequest
+        fields = [
+            'house_type', 'location', 'min_area', 'num_rooms', 'max_budget', 'max_monthly_rent',
+            'job', 'num_family_members', 'full_name', 'mobile', 'description',
+        ]
 
 
 class AddHomeVisitRequestForm(forms.ModelForm):

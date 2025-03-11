@@ -1,14 +1,34 @@
 from django.urls import reverse, reverse_lazy
 from django.views.decorators.http import require_POST, require_GET
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import get_object_or_404, redirect
+from django.shortcuts import get_object_or_404, redirect, render
 from django.views import generic
 from django.contrib import messages
 
 from models.models import Property, FavoriteProperty, SaleInfo, RentInfo
 
-from .forms import PropertyCommentForm, AddHomeVisitRequestForm, RequestAdviceForm
+from .forms import EstateRentForm, PropertyCommentForm, AddHomeVisitRequestForm, RequestAdviceForm
 # Create your views here.
+
+
+class EstateRentView(generic.FormView):
+    form_class = EstateRentForm
+    template_name = 'pages/estate_rentt.html'
+    success_url = reverse_lazy('pages:estate_rent')
+
+    def form_valid(self, form):
+        form.save()
+        messages.success(self.request, 'درخواست شما با موفقیت ثبت شد')
+        return super().form_valid(form)
+    
+    def form_invalid(self, form):
+        print(form.errors)
+        return super().form_invalid(form)
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['rent_properties'] = RentInfo.objects.all()
+        return context
 
 
 class EstateAlquilarView(generic.TemplateView):

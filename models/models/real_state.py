@@ -70,7 +70,7 @@ class Property(models.Model):
         VILLA = 'v', 'ویلا'
         OFFICE = 'o', 'اداری'
         APARTMENT = 'a', 'آپارتمان'
-        HOUSE = 'h', 'خانه'
+        COMMERCIAL = 'c', 'تجاری'
 
     class HasParking(models.TextChoices):
         HAS = 'd', 'دارد'
@@ -123,6 +123,20 @@ class Property(models.Model):
     
     def get_absolute_url(self):
         return reverse("pages:house_detail", kwargs={"house_pk": self.pk})
+    
+
+class EstateRentRequest(models.Model):
+    house_type = models.CharField(max_length=3, choices=Property.PROPERTY_TYPE.choices)
+    location = models.CharField(max_length=255)
+    min_area = models.IntegerField()
+    num_rooms = models.IntegerField()
+    max_budget = models.IntegerField()
+    max_monthly_rent = models.IntegerField()
+    job = models.CharField(max_length=255)
+    num_family_members = models.IntegerField()
+    full_name = models.CharField(max_length=255)
+    mobile = models.IntegerField()
+    description = models.CharField(max_length=255)
     
 
 class HomeAccess(models.Model):

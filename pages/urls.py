@@ -19,5 +19,6 @@ urlpatterns = [
     path('request/advice/', views.RequestAdviceView.as_view(), name='request_advice'),
     path('learn/more/buy/', views.LearnMoreBuyPageView.as_view(), name='learn_more_buy'),
     path('learn/more/sell/', views.LearnMoreSellPageView.as_view(), name='learn_more_sell'),
+    path('estate/rent/', views.EstateRentView.as_view(), name='estate_rent'),
     path('r/', views.EstateAlquilarView.as_view(), name='r'),
 ]

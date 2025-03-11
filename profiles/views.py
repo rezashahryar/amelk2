@@ -58,10 +58,10 @@ class CompanyInfoView(LoginRequiredMixin, AccessControlMixin, generic.FormView):
     template_name = 'profiles/company_info.html'
     success_url = reverse_lazy('profiles:company_info')
 
-    def has_permission(self, request):
-        if self.get_form_kwargs().get('instance'):
-            return bool(request.user.has_perm('models.is_agent'))
-        return super().has_permission(request)
+    # def has_permission(self, request):
+    #     if self.get_form_kwargs().get('instance'):
+    #         return bool(request.user.has_perm('models.is_agent'))
+    #     return super().has_permission(request)
 
     def form_valid(self, form):
         new_form = form.save(commit=False)
@@ -138,7 +138,7 @@ def house_edit_view(request, pk):
 
 
 @login_required
-@permission_required(perm='models.is_agent')
+# @permission_required(perm='models.is_agent')
 def house_delete_view(request, pk):
     Property.objects.get(pk=pk).delete()
     return redirect('profiles:dashboard')
@@ -164,6 +164,7 @@ class AddHouseView(LoginRequiredMixin, AccessControlMixin, generic.FormView):
         print(self.request.POST)
         data = form.cleaned_data
         property = Property(
+            user_id=self.request.user.pk,
             title=data['title'],
             description=data['description'],
             address=data['address'],
@@ -249,7 +250,7 @@ class ManagePropertyImageView(LoginRequiredMixin, AccessControlMixin, generic.Fo
 
 
 @login_required
-@permission_required('models.is_agent')
+# @permission_required('models.is_agent')
 def delete_property_image_view(request, pk):
     property_image_obj = get_object_or_404(PropertyImage, pk=pk)
     property_image_obj.delete()
@@ -259,9 +260,6 @@ def delete_property_image_view(request, pk):
 class ProfileMessagesView(LoginRequiredMixin, AccessControlMixin, generic.ListView):
     template_name = 'profiles/messages.html'
     context_object_name = 'visit_requests'
-
-    def has_permission(self, request):
-        return bool(request.user.has_perm('models.is_agent'))
 
     def get_queryset(self):
         queryset = HomeVisitRequest.objects.filter(property__company__user_id=self.request.user.pk)
