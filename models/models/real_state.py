@@ -193,7 +193,7 @@ class SaleInfo(models.Model):
         verbose_name='آگهی'
     )
     price = models.BigIntegerField(verbose_name='قیمت فروش (تومان)')
-    prepayment = models.BigIntegerField(verbose_name='پیشپرداخت (تومان)', null=True, blank=True)
+    prepayment = models.BigIntegerField(verbose_name='پیشپرداخت (تومان)', null=True, blank=True, default=0)
 
     class Meta:
         verbose_name = 'آگهی فروش'

@@ -19,8 +19,8 @@
       </div>
       <div class="content">
         <div class="caption-2 text">حساب</div>
-        {% if user.email %}
-          <div class="text-white fw-6">{{ user.email }}</div>
+        {% if user.full_name %}
+          <div class="text-white fw-6">{{ user.full_name }}</div>
         {% else %}
           <div class="text-white fw-6">{{ user.mobile }}</div>
         {% endif %}

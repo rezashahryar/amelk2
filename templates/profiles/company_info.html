@@ -60,7 +60,9 @@
                     <h5 class="title">پوستر مامور</h5><div class="box-agent-avt">
                       <div class="img-poster">
                         {% if form.instance.avatar %}
-                        <img width="300" alt="عکسی موجود نیست" loading="lazy" src="{{ form.instance.avatar.url }}" />
+                          <img width="300" alt="عکسی موجود نیست" loading="lazy" src="{{ form.instance.avatar.url }}" />
+                        {% else %}
+                          <img width="100" alt="عکسی موجود نیست" loading="lazy" src="{% static 'images/avatar/avt-png10.png' %}" />
                         {% endif %}
                       </div>
                       <div class="content uploadfile">
@@ -130,8 +132,8 @@
                       {% endfor %}
                     </div>
                   </div>
-                
-                  <input name="is_updated" type="hidden" value="{{ form.instance.pk }}">
+
+                  <input name="is_updated" type="hidden" value="{{ form.instance.pk }}" />
                   <div class="box">
                     <button type="submit" class="tf-btn primary">ذخیره</button>
                   </div>

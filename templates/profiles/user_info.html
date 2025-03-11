@@ -45,17 +45,25 @@
                     {% csrf_token %}
                     <h5 class="title">اطلاعات</h5>
                     <div class="box-fieldset">
-                      <label>ایمیل:<span>*</span></label>
-                      {{ form.email|add_class:'form-control style-1' }}
-                      {% for error in form.office_address.errors %}
+                      <label>نام و نام خانوادگی:<span>*</span></label>
+                      {{ form.full_name|add_class:'form-control style-1' }}
+                      {% for error in form.full_name.errors %}
                         <p class="alert alert-danger text-center mt-2">{{ error }}</p>
                       {% endfor %}
+                    </div>
+                    <div class="box-fieldset">
+                      <label>ایمیل:<span>*</span></label>
+                      {{ form.email|add_class:'form-control style-1' }}
+                      {% for error in form.email.errors %}
+                        <p class="alert alert-danger text-center mt-2">{{ error }}</p>
+                      {% endfor %}
+                    </div>
                     
                     <div class="box-fieldset">
                       <label>موبایل:<span>*</span></label>
                       {% comment %} <input name="office_number" class="form-control style-1" type="number" /> {% endcomment %}
                       {{ form.mobile|add_class:'form-control style-1' }}
-                      {% for error in form.office_number.errors %}
+                      {% for error in form.mobile.errors %}
                         <p class="alert alert-danger text-center mt-2">{{ error }}</p>
                       {% endfor %}
                     </div>

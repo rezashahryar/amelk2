@@ -14,7 +14,7 @@ class AddHouseBaseForm(forms.ModelForm):
             ('v', 'ویلا'),
             ('o', 'اداری'),
             ('a', 'آپارتمان'),
-            ('h', 'خانه')
+            ('c', 'تجاری')
         )
     )
     country = forms.ModelChoiceField(
@@ -41,7 +41,7 @@ class AddHouseBaseForm(forms.ModelForm):
     num_rooms = forms.IntegerField(initial=0, required=False)
     num_bedrooms = forms.IntegerField(initial=0, required=False)
     num_bathrooms = forms.IntegerField(initial=0, required=False)
-    year_construction = forms.IntegerField()
+    year_construction = forms.IntegerField(required=False)
     parking = forms.ChoiceField(
         choices=(
             ('d', 'دارد'),
@@ -86,7 +86,7 @@ class RealStateCompanyForm(forms.ModelForm):
 class EditUserInfoForm(forms.ModelForm):
     class Meta:
         model = get_user_model()
-        fields = ['mobile', 'email']
+        fields = ['mobile', 'email', 'full_name']
 
 
 class EditPropertyForm(forms.ModelForm):

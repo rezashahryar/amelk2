@@ -141,7 +141,7 @@ def house_edit_view(request, pk):
 # @permission_required(perm='models.is_agent')
 def house_delete_view(request, pk):
     Property.objects.get(pk=pk).delete()
-    return redirect('profiles:dashboard')
+    return redirect(request.headers.get('Referer'))
 
 
 class AddHouseView(LoginRequiredMixin, AccessControlMixin, generic.FormView):
@@ -181,10 +181,11 @@ class AddHouseView(LoginRequiredMixin, AccessControlMixin, generic.FormView):
             elevator=data['elevator'],
         )
         query = dict(self.request.POST)
-        if not query['year_construction'][0] == '':
+        if query['year_construction'][0] != '':
+            print('ok')
             property.year_construction = query['year_construction'][0]
         else:
-            print(query['year_construction'][1])
+            print('else')
             property.year_construction = query['year_construction'][1]
         if not query['num_rooms'][0] == '':
             property.num_rooms = query['num_rooms'][0]
